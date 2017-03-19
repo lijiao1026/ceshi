@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+<package name="mz"  extends="struts-default,json-default"  namespace="/">
+
+<result-types>
+			<result-type name="json"
+				class="org.apache.struts2.json.JSONResult" />
+		</result-types>
+		
+		<interceptors>
+			<interceptor name="json"
+				class="org.apache.struts2.json.JSONInterceptor" />
+		</interceptors>
+	<action name="user" class="com.lj.action.UserAction"  >
+	<result name="toRegister">/jsp/user/userRegister.jsp</result>
+	<result name="toLogin">/login.jsp</result>
+	<result name="checkSuccess" type="json">
+
+	</result>
+	</action>
+	<!-- <action name="user_*"  class="userAction"  method="{1}">
+		<result name="input">/login.jsp</result>
+		<result name="success" type="redirectAction">patient_findAll.action</result>
+		<result name="normalUser" type="redirectAction">patient_findAllforUser.action</result>
+		<result name="findAll" >/User/usermanage2.jsp</result>
+		<result name="saveFail"  >/User/useradd.jsp</result>
+		<result name="saveSuccess"  type="redirectAction">user_findAll.action</result>
+		<result name="updateSuccess"  >/User/userupdate.jsp</result>
+		<result name="saveUpdateUserSuccess"  type="redirectAction">user_findAll.action</result>
+		<result name="delateSuccess"  type="redirectAction">user_findAll.action</result>
+		<result name="searchFail" >/searchfail.jsp</result>
+		<result name="registerSuccess" >/login.jsp</result>
+		<result name="registerFail" >/User/userregister.jsp</result>
+		<result name="updateSuccessForUser" >/User/userupdateforuser.jsp</result>
+		<result name="saveUpdateUserSuccessForUser" >/login.jsp</result>
+		<result name="searchSuccess"  >/User/usersearch2.jsp</result>
+	</action>
+		
+	<action name="disease_*" class="diseaseAction" method="{1}">
+	<result name="findAll" >/Disease/diseasemanage2.jsp</result>
+		<result name="saveFail"  >/Disease/diseaseadd.jsp</result>
+		<result name="saveSuccess"  type="redirectAction">disease_findAll.action</result>
+		<result name="updateSuccess"  >/Disease/diseaseupdate.jsp</result>
+		<result name="findSuccess"  >/Disease/diseaseview.jsp</result>
+		<result name="saveUpdateDiseaseSuccess"  type="redirectAction">disease_findAll.action</result>
+		<result name="delateSuccess"  type="redirectAction">disease_findAll.action</result>
+	</action>	
+	
+	<action name="patient_*" class="patientAction" method="{1}">
+		<result name="findAll" >/index2.jsp</result>
+		<result name="findAllforUser" >/index.jsp</result>
+		<result name="findInformationSuccess" >/viewinformation.jsp</result>
+		<result name="viewInformationforuserSuccess" >/viewinformationforuser.jsp</result>
+		<result name="findAllNext" >/Patient/patientmanage2.jsp</result>
+		<result name="saveSuccess"  type="redirectAction">patient_findAllNext.action</result>
+		<result name="searchFail" >/searchfail.jsp</result>
+		<result name="searchSuccess"  >/Patient/patientsearch.jsp</result>
+		<result name="updateSuccess" >/Patient/patientupdate.jsp</result>
+		<result name="saveUpdatePatientSuccess"  type="redirectAction">patient_findAllNext.action</result>
+		<result name="delateSuccess"  type="redirectAction">patient_findAllNext.action</result>
+	</action>
+	
+	<action name="entity_*" class="entityAction" method="{1}">
+		<result name="findAll" >/Entity/entitymanageforpatient.jsp</result>
+		<result name="findAllIndex" >/Entity/entityview.jsp</result>
+		<result name="findAllIndexforuser" >/Entity/entityviewForuser.jsp</result>
+		<result name="findSuccess" >/Entity/entitymanage2.jsp</result>
+		<result name="findAllView" >/Entity/entityview.jsp</result>
+		<result name="findAllViewForuser" >/Entity/entityviewForuser.jsp</result>
+		<result name="findFail" >/searchentityfail.jsp</result>
+		<result name="saveDisease" >/Entity/entityadd.jsp</result>
+		<result name="saveSuccess"  type="redirectAction">entity_findAllEntity.action</result>
+		<result name="updateFirst" >/Entity/entityupdate.jsp</result>
+		<result name="updateFirstForPatient" >/Entity/entityupdateforpatient.jsp</result>
+		<result name="updateSuccess"  type="redirectAction">entity_findAllEntity.action</result>
+		<result name="updateSuccessForpatient"  type="redirectAction">patient_findAllNext.action</result>
+		<result name="delateSuccess"  type="redirectAction">entity_findAllEntity.action</result>
+	
+	</action>
+		 -->
+</package>
+</struts>
+	

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.lj.pojo.user.User"  table="USER" lazy="false">
+	     <id name="uid"  column="uid">
+	        <generator class="native" />
+	      </id>
+        <property name="userName"  column="username" length="20"></property>
+		<property name="name"  column="name" length="10"></property>
+		<property name="password"  column="password" length="20"></property>
+		<property name="sex"  column="sex" length="1"></property>
+		<property name="age"  column="age" length="3"></property>
+		<property name="telPhone"  column="telPhone" length="20"></property>
+		<property name="address"  column="address" length="20"></property>
+		<property name="userType"  column="userType" length="1"></property>
+</class>
+</hibernate-mapping>
