@@ -120,7 +120,7 @@ function checkExist() {
 					{
 			/* 		data = message.message; */
 			console.log(message);
-					alert(message.message);
+					/* alert(message.message); */
 						/*if (proText != 'exist')
 						{
 							window.wxc.xcConfirm("已存在用户名", window.wxc.xcConfirm.typeEnum.info);
