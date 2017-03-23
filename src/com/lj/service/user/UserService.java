@@ -20,5 +20,11 @@ public interface UserService {
  * @return
  */
 	User findByUsername(String userName);
+	/**
+	 * 登录方法
+	 * @param user
+	 * @return
+	 */
+     User login(User user);
 
 }

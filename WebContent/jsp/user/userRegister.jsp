@@ -86,6 +86,7 @@ pageEncoding="utf-8"%>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/bootstrap.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/xcConfirm.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.form.js"></script>
 <script type="text/javascript">
 
 
@@ -95,9 +96,7 @@ pageEncoding="utf-8"%>
 			window.wxc.xcConfirm( "是否保存？",window.wxc.xcConfirm.typeEnum.warning,{
 				
 			onOk:function (e) {
-				$('#registerForm').submit(); 
-				
-				
+				$('#registerForm').submit(); 	
 			}
 			});
 		}
@@ -118,17 +117,15 @@ function checkExist() {
 					success : function(message)
 					
 					{
-			/* 		data = message.message; */
-			console.log(message);
-					/* alert(message.message); */
-						/*if (proText != 'exist')
+			/* console.log(message.message); */
+					if(message.message==1)
 						{
-							window.wxc.xcConfirm("已存在用户名", window.wxc.xcConfirm.typeEnum.info);
-							returnValue = false;
-						}*/
+						window.wxc.xcConfirm("已存在用户名", window.wxc.xcConfirm.typeEnum.info);
+						returnValue = false;
+						}
 					}
 				});
-
+	return returnValue;
 }
 	function checkParm() {
 		var userName = $('#enterusername').val();

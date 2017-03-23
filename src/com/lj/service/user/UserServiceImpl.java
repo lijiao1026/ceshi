@@ -31,4 +31,10 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 
+	@Override
+	public User login(User user) {
+		User existUser=userDao.findByUsernameAndPassword(user);
+		return existUser;
+	}
+
 }

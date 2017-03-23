@@ -3,10 +3,17 @@ package com.lj.action;
 
 
 
-import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.apache.struts2.ServletActionContext;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import com.lj.constant.GeneralConstant;
 import com.lj.pojo.user.User;
 import com.lj.service.user.UserService;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import net.sf.json.JSONObject;
@@ -65,11 +72,23 @@ public class UserAction extends ActionSupport{
 			}
 			
 		} catch (Exception e) {
-	
+			
 		}
-	/*	String result2 =result.toString();*/
 		 return "checkSuccess";
 	}
+	public String login(){
+		User existUser = userService.login(user);
+		if(existUser==null){
+			this.addActionError("用户名或者密码错误!");
+			return INPUT;
+		}else{
+			user=existUser;
+			ActionContext.getContext().getSession().put(GeneralConstant.SESSION_USER, existUser);
+			return "loginSuccess";
+		}
+	}
+	
+	
 	
 	
 	public User getUser() {

@@ -13,7 +13,17 @@ public interface UserDao {
 	 * @param user
 	 */
 	void saveUser(User user);
-
+	/**
+	 * 用户名验证
+	 * @param user
+	 * @return
+	 */
 	User findByUsername(String user);
+	/**
+	 * 通过用户名和密码实现登录
+	 * @param user
+	 * @return
+	 */
+	User findByUsernameAndPassword(User user);
 
 }
