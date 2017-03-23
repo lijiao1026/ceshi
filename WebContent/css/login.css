@@ -7,10 +7,16 @@
 #loginForm{
 
 }
+.bottomCopyright{
+  padding-right: 100px;
+  font: 500 19px/20px Tahoma, Arial, 瀹嬩綋, 瀹嬩綋, 榛戜綋;
+  padding-top: 20px;
+  
+}
 #topLeave{
  border: 1px solid #ddd;
  border-radius: 5px;
- margin-top: 80px;
+ margin-top: 50px;
 }
 #firstIn{
  padding-top: 30px;

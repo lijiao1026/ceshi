@@ -87,7 +87,14 @@ public class UserAction extends ActionSupport{
 			return "loginSuccess";
 		}
 	}
-	
+	public String toIndex(){
+		try {
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "index";
+	}
 	
 	
 	

@@ -25,7 +25,7 @@ pageEncoding="utf-8"%>
 			<div class="row">
 				<div class="col-lg-4 col-md-4" id="topLeave">
 					<form id="loginForm" action="user!login.action" method="post">
-						<h6 style="color: red"><s:actionerror/></h6>
+						<h6 style="color: red;padding-top:20px;"><s:actionerror/></h6>
 						<div class="col-md-12" id="firstIn">
 							<div class="form-group" >
 								<label for="username">用户名</label>
@@ -45,7 +45,7 @@ pageEncoding="utf-8"%>
 						</div>
 						<div class="col-md-12">
 							<div class="form-group">				
-								<a class="help-block" href="user!toRegister" data-toggle="modal" data-target="#modal">马上注册</a>
+								<a class="help-block" href="<%=request.getContextPath()%>/ruser!toRegister" data-toggle="modal" data-target="#modal">马上注册</a>
 							</div>
 						</div>
 						<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal">
