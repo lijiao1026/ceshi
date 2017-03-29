@@ -45,7 +45,7 @@ pageEncoding="utf-8"%>
 						</div>
 						<div class="col-md-12">
 							<div class="form-group">				
-								<a class="help-block" href="<%=request.getContextPath()%>/ruser!toRegister" data-toggle="modal" data-target="#modal">马上注册</a>
+								<a class="help-block" href="<%=request.getContextPath()%>/user!toRegister" data-toggle="modal" data-target="#modal">马上注册</a>
 							</div>
 						</div>
 						<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal">

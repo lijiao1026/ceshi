@@ -1,5 +1,7 @@
 package com.lj.dao.user;
 
+import java.util.List;
+
 import com.lj.pojo.user.User;
 /**
  * 用户Dao
@@ -25,5 +27,30 @@ public interface UserDao {
 	 * @return
 	 */
 	User findByUsernameAndPassword(User user);
+	/**
+	 * 根据用户编号查询用户
+	 * @param uid
+	 * @return
+	 */
+	User findByUid(Integer uid);
+	/**
+	 * 根据类型查找出用户总个数
+	 * @param string
+	 * @return
+	 */
+	int findCount(String string);
+	/**
+	 * 根据类型分页查找用户
+	 * @param begin
+	 * @param pageSize
+	 * @param string
+	 * @return
+	 */
+	List<User> findByPage(int begin, int pageSize, String string);
+	/**
+	 * 更新用户
+	 * @param oldUser
+	 */
+	void saveUpdateUser(User oldUser);
 
 }

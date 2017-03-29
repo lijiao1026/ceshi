@@ -47,6 +47,9 @@
 	 <bean id="userAction"  class="com.lj.action.UserAction" scope="prototype">
 	<property name="userService" ref="userService"></property>
 	</bean> 
+	 <bean id="userType1Action"  class="com.lj.action.userType1.UserType1Action" scope="prototype">
+	<property name="userService" ref="userService"></property>
+	</bean> 
 	<!-- 配置业务层的类 -->
 	 <bean id="userService" class="com.lj.service.user.UserServiceImpl">
 	<property name="userDao" ref="userDao"></property>

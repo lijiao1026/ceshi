@@ -1,7 +1,5 @@
 package com.lj.action;
-
-
-
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -39,13 +37,22 @@ public class UserAction extends ActionSupport{
 	
     private String userName;
     private String message;
+    private Integer uid;
+    private String newPassword;
+    private String newPasswordTwo;
+    private String oldPassword;
     
-    
-    
+    /**
+     * 跳转到注册页面
+     * @return
+     */
 	public String toRegister(){		
 		return "toRegister";		
 	}
-	
+	/**
+	 * 注册保存
+	 * @return
+	 */
 	public String  registerSave(){
 		
 		if(user!=null){
@@ -60,6 +67,10 @@ public class UserAction extends ActionSupport{
 		return "toLogin";
 		
 	}
+	/**
+	 * 验证用户名是否重复
+	 * @return
+	 */
 	public String checkUserName(){
 		
 		try {
@@ -76,17 +87,43 @@ public class UserAction extends ActionSupport{
 		}
 		 return "checkSuccess";
 	}
+	/**
+	 * 登录
+	 * @return
+	 */
 	public String login(){
-		User existUser = userService.login(user);
-		if(existUser==null){
-			this.addActionError("用户名或者密码错误!");
-			return INPUT;
-		}else{
-			user=existUser;
-			ActionContext.getContext().getSession().put(GeneralConstant.SESSION_USER, existUser);
-			return "loginSuccess";
+		try {
+			if(user!=null)
+			{
+				User existUser = userService.login(user);
+				if(existUser==null){
+					this.addActionError("用户名或者密码错误!");
+					return INPUT;
+				}else{
+					user=existUser;
+					ActionContext.getContext().getSession().put(GeneralConstant.SESSION_USER, existUser);
+					return "loginSuccess";
+				}
+			}
+			else{
+				User userSession=(User) ActionContext.getContext().getSession().get(GeneralConstant.SESSION_USER);
+				if(userSession==null){
+					return INPUT;
+				}else{
+					user=userSession;
+					return "loginSuccess";
+				}
+			}
+		} catch (Exception e) {
+			
 		}
+		return null;
+		
 	}
+	/**
+	 *系统首页跳转
+	 * @return
+	 */
 	public String toIndex(){
 		try {
 			
@@ -95,8 +132,38 @@ public class UserAction extends ActionSupport{
 		}
 		return "index";
 	}
-	
-	
+	/**
+	 * 改变密码
+	 * @return
+	 */
+	public String changePassWord(){
+		try {
+		user=userService.findByUid(uid);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "changePassword";
+	}
+	/**
+	 * 保存修改密码
+	 * @return
+	 */
+	public String saveNewPassword(){
+		try {
+		User oldUser=userService.findByUid(user.getUid());	
+		if(oldUser.getPassword().equals(oldPassword)){
+			oldUser.setPassword(newPassword);
+			userService.updateUser(oldUser);	
+			message="1";
+		}else{
+			message="2";
+		}
+		} catch (Exception e) {
+			message="0";
+		}
+		return "saveNewPassword";
+	}
 	
 	public User getUser() {
 		return user;
@@ -119,6 +186,32 @@ public class UserAction extends ActionSupport{
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public Integer getUid() {
+		return uid;
+	}
+
+	public void setUid(Integer uid) {
+		this.uid = uid;
+	}
+	public String getNewPassword() {
+		return newPassword;
+	}
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+	public String getNewPasswordTwo() {
+		return newPasswordTwo;
+	}
+	public void setNewPasswordTwo(String newPasswordTwo) {
+		this.newPasswordTwo = newPasswordTwo;
+	}
+	public String getOldPassword() {
+		return oldPassword;
+	}
+	public void setOldPassword(String oldPassword) {
+		this.oldPassword = oldPassword;
 	}
 
 	
