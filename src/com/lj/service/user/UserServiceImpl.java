@@ -81,4 +81,29 @@ public class UserServiceImpl implements UserService {
 		userDao.saveUpdateUser(oldUser);
 	}
 
+	/**
+	 * 按照姓名分页查询用户
+	 */
+	@Override
+	public PageBean<User> findByUsername(Integer currPage, String string, String searchUserName) {
+		PageBean<User> pageBean=new PageBean<User>();
+		//封装当前的页数
+		pageBean.setCurrPage(currPage);
+		//封装每页显示的记录数
+		int pageSize = 10;
+		pageBean.setPageSize(pageSize);
+		//封装总记录数
+		int totalCount = userDao.findCountByName(string,searchUserName);
+		pageBean.setTotalCount(totalCount);
+		//封装总页数
+		double tc = totalCount;
+		Double num = Math.ceil(tc / pageSize);
+		pageBean.setTotalPage(num.intValue());
+		//封装每页显示的数据
+		int begin = (currPage - 1) * pageSize;
+		List<User> list = userDao.findByPageByName(begin,pageSize,string,searchUserName);
+		pageBean.setList(list);
+		return pageBean;
+	}
+
 }

@@ -88,5 +88,24 @@ public int findCount(String string) {
 	public void saveUpdateUser(User oldUser) {
 		this.getHibernateTemplate().update(oldUser);
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> findByPageByName(int begin, int pageSize, String string, String searchUserName) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(User.class).add(Restrictions.like("userType",string )).add(Restrictions.like("name", "%"+searchUserName+"%"));
+		List<User> list = this.getHibernateTemplate().findByCriteria(criteria, begin, pageSize);
+		return list;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public int findCountByName(String string, String searchUserName) {
+		String hql="select count(*) from User where userType=?and name=?";
+		List<Long> list = this.getHibernateTemplate().find(hql,string,"%"+searchUserName+"%");
+		if (list.size() > 0) {
+			return list.get(0).intValue();
+		}
+		return 0;
+	}
 
 }

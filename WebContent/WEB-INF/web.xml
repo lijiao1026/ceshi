@@ -10,6 +10,19 @@
   <param-name>contextConfigLocation</param-name>
   <param-value>classpath:applicationContext.xml</param-value></context-param>
   
+  <!-- 中文乱码的过滤器 -->
+<filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
   
   <!-- struts2的核心过滤器 -->
   <filter>

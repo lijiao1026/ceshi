@@ -22,17 +22,16 @@ pageEncoding="utf-8"%>
 				</button>
 				<a class="navbar-brand" href="#">查询</a>
 			</div>
-			<form class="navbar-form navbar-right">
+			<form class="navbar-form navbar-right" action="" id="searchForm">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="请输入姓名">
+					<input type="text" name="searchUserName" id="searchUserName" class="form-control" placeholder="请输入姓名">
 				</div>
-				<button type="button" class="btn btn-default">查询</button>
+				<button type="button" class="btn btn-default" id="searchStart">查询</button>
 			</form>
-		<!-- 	<button type="button" class="btn btn-default aria-label="新增">
-				<span class="gylphicon gylphicon-plus" aira-hidden="true"></span>
-			</button> -->
+
 		</nav>
 	</div>
+	<s:hidden name="currPage" id="currPage"></s:hidden>
 
 	<div class="col-lg-12 col-md-12">
 		<nav class="navbar navbar-default">
@@ -67,6 +66,7 @@ pageEncoding="utf-8"%>
 			<s:iterator value="userList" status="st">
 			<tr>
 				<td>
+
 					<s:property value="#st.count + ((currPage-1)*10)" />
 				</td>
 				<td>
@@ -108,27 +108,29 @@ pageEncoding="utf-8"%>
 </s:else>
 </table>
 </div>
-<div class="col-lg-12 col-md-12">
-<nav aria-label="Page navigation">
-  <ul class="pagination  pagination-lg pagination-right">
-    <li>
-      <a href="${pageContext.request.contextPath}/user_findAll.action?currPage=<s:property value="currPage-1" />" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
-      <a href="${pageContext.request.contextPath}/user_findAll.action?currPage=<s:property value="currPage+1" />" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
+<div class="col-lg-4 col-md-4 col-lg-push-5 col-md-push-5">
+	<nav aria-label="Page navigation">
+		<ul class="pagination  pagination-lg pagination-right">
+			<li id="Previous">
+				<s:if test="currPage!=1">
+				<a href="${pageContext.request.contextPath}/userType1!queryList.action?currPage=<s:property value="currPage-1" />" aria-label="Previous">
+				<span aria-hidden="true">&laquo;</span>
+			</a>
+		</s:if>
+
+	</li>
+
+	<li>
+		<s:if test="currPage!=totalPage&&totalPage!=0">
+		<a href="${pageContext.request.contextPath}/userType1!queryList.action?currPage=<s:property value="currPage+1" />" aria-label="Next">
+		<span aria-hidden="true">&raquo;</span>
+	</a>
+</s:if>
+
+</li>
+</ul>
 </nav>
-	
+
 </div>
 
 
@@ -142,5 +144,23 @@ pageEncoding="utf-8"%>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/bootstrap.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/xcConfirm.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.form.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var pageTotal="${totalPage}";
+		var pageNo="";
+		for(var i=1;i<=pageTotal;i++){
+			pageNo+="<li><a href={pageContext.request.contextPath}/userType1!queryList.action?currPage="+i+">"+i+"</a></li>"
+		}
+		$("#Previous").after(pageNo);
+	})
+	$("#searchStart").click(function () {
+		// body...
+		var currPage=$("#currPage").val();
+		var searchUserName=$("#searchUserName").val();
+		$("#searchForm").action="{pageContext.request.contextPath}/userType1!queryList.action?currPage="+currPage+"&searchUserName="+searchUserName;
+		$("#searchForm").submit();
+	})
+	
+</script>
 </body>
 </html>

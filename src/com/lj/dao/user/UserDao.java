@@ -52,5 +52,21 @@ public interface UserDao {
 	 * @param oldUser
 	 */
 	void saveUpdateUser(User oldUser);
+	/**
+	 * 分页按照姓名查询用户
+	 * @param begin
+	 * @param pageSize
+	 * @param string
+	 * @param searchUserName
+	 * @return
+	 */
+	List<User> findByPageByName(int begin, int pageSize, String string, String searchUserName);
+	/**
+	 * 按照姓名查询总记录数
+	 * @param string
+	 * @param searchUserName
+	 * @return
+	 */
+	int findCountByName(String string, String searchUserName);
 
 }

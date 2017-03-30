@@ -1,6 +1,7 @@
 package com.lj.action.userType1;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.lj.pojo.pageBean.PageBean;
@@ -26,23 +27,68 @@ public class UserType1Action extends ActionSupport{
     public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-    
+    /**
+     * 当前页数
+     */
     private Integer currPage = 1;
+    /**
+     * 用户集合
+     */
 	private List<User> userList;
-    
-  	public void setCurrPage(Integer currPage) {
-  		this.currPage = currPage;
-  	}
-  	
+	/**
+	 * 总页数
+	 */
+    private Integer totalPage;
+    /**
+     * 用户姓名查询
+     */
+    private String searchUserName;
   
+  
+	public String getSearchUserName() {
+		return searchUserName;
+	}
+
+
+
+
+
+
+
+
+	public void setSearchUserName(String searchUserName) {
+		this.searchUserName = searchUserName;
+	}
+
+
+
+
+
+
+
+
 	public String queryList(){
   		try {
-  			PageBean<User> pageBean = userService.findByPage(currPage,"1"); 
-  			userList= pageBean.getList();
-  			while(userList.size()<10){
-  				User user=new User();
-  				user=null;
-  				userList.add(user);
+  			//因为用户类型为1的是用户 所以这里传入1
+  			if(searchUserName==null||searchUserName==""){
+  				PageBean<User> pageBean = userService.findByPage(currPage,"1"); 
+  				userList= pageBean.getList();
+  	  			while(userList.size()<10&&userList.size()!=0){
+  	  				User user=new User();
+  	  				user=null;
+  	  				userList.add(user);
+  	  			}
+  	  			totalPage=pageBean.getTotalCount();
+  			}else{
+  			
+  	  		PageBean<User> pageBean =userService.findByUsername(currPage,"1",searchUserName);	
+				userList= pageBean.getList();
+	  			while(userList.size()<10&&userList.size()!=0){
+	  				User user=new User();
+	  				user=null;
+	  				userList.add(user);
+	  			}
+	  			totalPage=pageBean.getTotalCount();
   			}
   		
 		} catch (Exception e) {
@@ -54,6 +100,10 @@ public class UserType1Action extends ActionSupport{
 
   	
   	
+	
+	
+	
+	
   	
 	public List<User> getUserList() {
 		return userList;
@@ -66,6 +116,21 @@ public class UserType1Action extends ActionSupport{
 	public Integer getCurrPage() {
 		return currPage;
 	}
+	public void setCurrPage(Integer currPage) {
+  		this.currPage = currPage;
+  	}
+  	
+
+	public Integer getTotalPage() {
+		return totalPage;
+	}
+
+
+	public void setTotalPage(Integer totalPage) {
+		this.totalPage = totalPage;
+	}
+
+
 	
 
 }

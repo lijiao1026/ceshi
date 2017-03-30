@@ -45,5 +45,13 @@ public interface UserService {
 	 * @param oldUser
 	 */
 	void updateUser(User oldUser);
+	/**
+	 * 分页根据姓名查询用户
+	 * @param currPage
+	 * @param string
+	 * @param searchUserName
+	 * @return
+	 */
+	PageBean<User> findByUsername(Integer currPage, String string, String searchUserName);
 
 }
