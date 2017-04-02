@@ -49,9 +49,9 @@ public class UserType1Action extends ActionSupport{
 		return searchUserName;
 	}
 
-
-
-
+	private User user;
+	private String message;
+	private Integer uid;
 
 
 
@@ -78,7 +78,7 @@ public class UserType1Action extends ActionSupport{
   	  				user=null;
   	  				userList.add(user);
   	  			}
-  	  			totalPage=pageBean.getTotalCount();
+  	  			totalPage=pageBean.getTotalPage();
   			}else{
   			
   	  		PageBean<User> pageBean =userService.findByUsername(currPage,"1",searchUserName);	
@@ -98,11 +98,47 @@ public class UserType1Action extends ActionSupport{
 		return "list";
 	}
 
+	/**
+	 * 跳转到新增页面
+	 * @return
+	 */
+  	public String toAdd(){
+  		try {
+  			return "toAdd";
+		} catch (Exception e) {
+		e.printStackTrace();
+		return null;
+		}
+  		
+  	}
   	
-  	
+	public String addSave(){
+		if(user!=null){
+			try {
+				userService.saveUser(user);
+				message="1";
+			} catch (Exception e) {
+				 e.printStackTrace();
+			
+			}
+		}
+		return "addSuccess";
+	}
 	
-	
-	
+	/**
+	 * 查看
+	 * @return
+	 */
+	public String toDetail(){
+		try {
+			user = userService.findByUid(uid);
+			return "detail";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
 	
   	
 	public List<User> getUserList() {
@@ -131,6 +167,36 @@ public class UserType1Action extends ActionSupport{
 	}
 
 
-	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+
+
+
+
+
+
+
+	public Integer getUid() {
+		return uid;
+	}
+
+	public void setUid(Integer uid) {
+		this.uid = uid;
+	}
+
 
 }

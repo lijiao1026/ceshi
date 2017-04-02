@@ -52,7 +52,7 @@ pageEncoding="utf-8"%>
 			<div class="col-md-6" >
 				<div class="form-group" >
 					<label for="entersex">性别</label>
-					<select id="entersex" name="user.entersex" class="selectpicker show-tick form-control" data-live-searck="false">
+					<select id="entersex" name="user.sex" class="selectpicker show-tick form-control" data-live-searck="false">
 						<option value="">请选择</option>
 						<option value="0">男</option>
 						<option value="1">女</option>

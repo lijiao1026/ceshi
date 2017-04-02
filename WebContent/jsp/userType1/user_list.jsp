@@ -11,6 +11,13 @@ pageEncoding="utf-8"%>
 
 </head>
 <body>
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<!-- 	模态窗内容加载位置 -->
+								</div>
+							</div>
+						</div>		
 	<div class="col-lg-12 col-md-12">
 		<nav class="navbar navbar-default">
 			<div class="navbar-header">
@@ -45,8 +52,8 @@ pageEncoding="utf-8"%>
 				<a class="navbar-brand" href="#">患者列表</a>
 			</div>
 			<div class="navbar-form navbar-right">
-				<button type="button" class="btn btn-default" >
-					<span class="glyphicon glyphicon-plus" aira-hidden="true"></span>新增
+				<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal" href="<%=request.getContextPath()%>/userType1!toAdd"  >
+					<span class="glyphicon glyphicon-plus" aira-hidden="true" ></span>新增
 				</button> 
 			</div>
 			
@@ -90,7 +97,8 @@ pageEncoding="utf-8"%>
 				</td>
 				<td>
 					<s:if test="userName!=null">
-					<button type="button" class="btn btn-info btn-xs">查看</button>
+					<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal"  href="<%=request.getContextPath()%>/userType1!toDetail.action?uid=<s:property value="uid" />">查看</button>
+					<button type="button" class="btn btn-warning btn-xs">修改</button>
 					<button type="button" class="btn btn-danger btn-xs">删除</button>
 				</s:if>
 				
@@ -160,7 +168,9 @@ pageEncoding="utf-8"%>
 		$("#searchForm").action="{pageContext.request.contextPath}/userType1!queryList.action?currPage="+currPage+"&searchUserName="+searchUserName;
 		$("#searchForm").submit();
 	})
-	
+	function aa(){
+		alert(1);
+	}
 </script>
 </body>
 </html>

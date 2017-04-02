@@ -54,4 +54,6 @@ public interface UserService {
 	 */
 	PageBean<User> findByUsername(Integer currPage, String string, String searchUserName);
 
+
+
 }

@@ -30,6 +30,9 @@
 	<!-- 患者Action -->
 	<action name="userType1" class="com.lj.action.userType1.UserType1Action">
 	<result name="list">/jsp/userType1/user_list.jsp</result>
+	<result name="toAdd">/jsp/userType1/user_add.jsp</result>
+	<result name="addSuccess" type="json"></result>
+	<result name="detail">/jsp/userType1/user_detail.jsp</result>
 	</action>
 	
 </package>
