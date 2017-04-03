@@ -70,7 +70,7 @@ public class UserType1Action extends ActionSupport{
 	public String queryList(){
   		try {
   			//因为用户类型为1的是用户 所以这里传入1
-  			if(searchUserName==null||searchUserName==""){
+  			if(searchUserName==null||searchUserName.equals("")){
   				PageBean<User> pageBean = userService.findByPage(currPage,"1"); 
   				userList= pageBean.getList();
   	  			while(userList.size()<10&&userList.size()!=0){
@@ -139,8 +139,47 @@ public class UserType1Action extends ActionSupport{
 		}
 		
 	}
-	
+	/**
+	 * 跳转修改页面
+	 * @return
+	 */
+	public String toEdit(){
+		try {
+			user = userService.findByUid(uid);
+			return "edit";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	/**
+	 * 删除用户
+	 * @return
+	 */
+  	public String delate(){
+  		try {
+  			user = userService.findByUid(uid);
+  			userService.delate(user);
+  			message="1";
+  			return "delate";
+		} catch (Exception e) {
+		e.printStackTrace();
+		return null;
+		}
+  	}
   	
+  	public String editSave(){
+  		if(user!=null){
+			try {
+				userService.saveUpdateUser(user);
+				message="1";
+			} catch (Exception e) {
+				 e.printStackTrace();
+			
+			}
+		}
+		return "editSuccess";
+  	}
 	public List<User> getUserList() {
 		return userList;
 	}

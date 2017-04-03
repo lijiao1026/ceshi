@@ -11,13 +11,13 @@ pageEncoding="utf-8"%>
 
 </head>
 <body>
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<!-- 	模态窗内容加载位置 -->
-								</div>
-							</div>
-						</div>		
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<!-- 	模态窗内容加载位置 -->
+			</div>
+		</div>
+	</div>		
 	<div class="col-lg-12 col-md-12">
 		<nav class="navbar navbar-default">
 			<div class="navbar-header">
@@ -98,8 +98,8 @@ pageEncoding="utf-8"%>
 				<td>
 					<s:if test="userName!=null">
 					<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal"  href="<%=request.getContextPath()%>/userType1!toDetail.action?uid=<s:property value="uid" />">查看</button>
-					<button type="button" class="btn btn-warning btn-xs">修改</button>
-					<button type="button" class="btn btn-danger btn-xs">删除</button>
+					<button type="button" class="btn btn-warning btn-xs"  data-toggle="modal" data-target="#modal" href="<%=request.getContextPath()%>/userType1!toEdit.action?uid=<s:property value="uid" />" >修改</button>
+					<button type="button" class="btn btn-danger btn-xs" onclick="deleteUser(${uid})">删除</button>
 				</s:if>
 				
 			</td>
@@ -168,8 +168,38 @@ pageEncoding="utf-8"%>
 		$("#searchForm").action="{pageContext.request.contextPath}/userType1!queryList.action?currPage="+currPage+"&searchUserName="+searchUserName;
 		$("#searchForm").submit();
 	})
-	function aa(){
-		alert(1);
+	function queryList(){
+		$("#searchStart").click();
+	}
+	function deleteUser(uid) {
+
+		window.wxc.xcConfirm( "是否删除？",window.wxc.xcConfirm.typeEnum.warning,{
+
+			onOk:function (e) {
+				$.ajax(
+				{
+					type : 'get',
+					dataType : 'json',
+					url : 'userType1!delate.action',
+					async : false,
+					data :
+					{
+						uid : uid,					
+					},
+					success : function(message)
+					{
+						
+						if(message.message==1)
+						{
+							window.wxc.xcConfirm("删除成功", window.wxc.xcConfirm.typeEnum.info);
+							queryList();
+						}
+					}
+				});
+
+
+			}
+		});
 	}
 </script>
 </body>

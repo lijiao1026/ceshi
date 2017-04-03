@@ -15,44 +15,46 @@ pageEncoding="utf-8"%>
 		x
 		<!-- 防止页面被覆盖为黑色 -->
 	</button>
-	<h3 class="modal-title">注册</h3>
-	<form id="registerForm" action="user!registerSave.action" method="post">
+	<h3 class="modal-title">修改</h3>
+	<form id="addForm" action="userType1!editSave.action" method="post">
+	<input type="hidden" name="user.userType" value="1">
 		<div class="modal-body">
+		<s:hidden name="user.uid" id="uid"></s:hidden>
 			<!-- 	<div class="col-md-6" id="firstIn"> -->
 			<div class="col-md-6"  id="firstIn">
 				<div class="form-group" >
 					<label for="enterusername">用户名</label>
-					<input type="text"  maxlength="20" class="form-control" name="user.userName" id="enterusername" placeholder="请输入用户名">
+					<input type="text" class="form-control" maxlength="20" name="user.userName"  value="${user.userName}" id="enterusername" placeholder="请输入用户名">
 				</div>
 			</div>
 			<div class="col-md-6" id="firstIn">
 				<div class="form-group">
 					<label for="enterpassword">密码</label>
-					<input type="password" maxlength="20"  class="form-control" name="user.password" id="enterpassword" placeholder="请输入密码">
+					<input type="password" class="form-control"  maxlength="20" name="user.password" value="${user.password}" id="enterpassword" placeholder="请输入密码">
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="form-group">
 					<label for="enterpasswordTwo">确认密码</label>
-					<input type="password"  maxlength="20" class="form-control" id="enterpasswordTwo" placeholder="请再次输入密码">
+					<input type="password" class="form-control"  maxlength="20" id="enterpasswordTwo" placeholder="请再次输入密码">
 				</div>
 			</div>
 			<div class="col-md-6" >
 				<div class="form-group" >
 					<label for="entername">姓名</label>
-					<input type="text" maxlength="10"class="form-control" name="user.name" id="entername" placeholder="请输入姓名">
+					<input type="text" class="form-control"  value="${user.name}"maxlength="10" name="user.name" id="entername" placeholder="请输入姓名">
 				</div>
 			</div>
 			<div class="col-md-6" >
 				<div class="form-group" >
 					<label for="enterage">年龄</label>
-					<input type="text" maxlength="3" class="form-control" name="user.age" id="enterage" placeholder="请输入年龄">
+					<input type="text" class="form-control"  maxlength="3" name="user.age" value="${user.age}" id="enterage" placeholder="请输入年龄">
 				</div>
 			</div>
 			<div class="col-md-6" >
 				<div class="form-group" >
 					<label for="entersex">性别</label>
-					<select id="entersex" name="user.sex" class="selectpicker show-tick form-control" data-live-searck="false">
+					<select id="entersex" name="user.sex"   class="selectpicker show-tick form-control" data-live-searck="false">
 						<option value="">请选择</option>
 						<option value="0">男</option>
 						<option value="1">女</option>
@@ -63,13 +65,13 @@ pageEncoding="utf-8"%>
 		<div class="col-md-6" >
 			<div class="form-group" >
 				<label for="enterphone">手机号码</label>
-				<input type="text" maxlength="20" class="form-control" name="user.telPhone" id="enterphone" placeholder="请输入手机号码">
+				<input type="text" class="form-control"  value="${user.telPhone}" maxlength="20" name="user.telPhone" id="enterphone" placeholder="请输入手机号码">
 			</div>
 		</div>
 		<div class="col-md-6">
 			<div class="form-group" >
 				<label for="enteraddress">家庭住址</label>
-				<input type="text" maxlength="20" class="form-control" name="user.address" id="enteraddress" placeholder="请输入地址">
+				<input type="text" class="form-control"  maxlength="20"  value="${user.address}" name="user.address" id="enteraddress" placeholder="请输入地址">
 			</div>
 		</div>
 
@@ -88,23 +90,40 @@ pageEncoding="utf-8"%>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/xcConfirm.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.form.js"></script>
 <script type="text/javascript">
-
-
+$('#modal').modal('show');
+$('#modal').on('hidden.bs.modal', function (e) {
+			queryList();
+	})
 	function addSave() {
 		if (checkParm()&&checkExist()) {	
 		
 			window.wxc.xcConfirm( "是否保存？",window.wxc.xcConfirm.typeEnum.warning,{
 				
 			onOk:function (e) {
-				$('#registerForm').submit(); 	
+				var option={
+
+						success:function(data){
+							if (data.message==1) {
+								window.wxc.xcConfirm("修改成功", window.wxc.xcConfirm.typeEnum.info);
+								$('#modal').modal('hide');
+								
+								/* location=location; */
+								/* window.parent.$('#modal').modal('hide'); */
+							}
+						}
+					}
+						$("#addForm").ajaxSubmit(option);
+				
 			}
 			});
 		}
 	}
 function checkExist() {
+	var userName2='${user.userName}';
 	var userName = $('#enterusername').val();
 	var returnValue=true;
-	$.ajax(
+	if(userName2!=userName){
+		$.ajax(
 				{
 					type : 'get',
 					dataType : 'json',
@@ -115,9 +134,7 @@ function checkExist() {
 						userName : userName,					
 					},
 					success : function(message)
-					
 					{
-			/* console.log(message.message); */
 					if(message.message==1)
 						{
 						window.wxc.xcConfirm("已存在用户名", window.wxc.xcConfirm.typeEnum.info);
@@ -125,6 +142,8 @@ function checkExist() {
 						}
 					}
 				});
+	}
+
 	return returnValue;
 }
 	function checkParm() {

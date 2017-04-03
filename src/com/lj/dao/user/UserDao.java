@@ -68,5 +68,10 @@ public interface UserDao {
 	 * @return
 	 */
 	int findCountByName(String string, String searchUserName);
+	/**
+	 * 删除用户
+	 * @param user
+	 */
+	void delate(User user);
 
 }

@@ -107,5 +107,9 @@ public int findCount(String string) {
 		}
 		return 0;
 	}
+	@Override
+	public void delate(User user) {
+		this.getHibernateTemplate().delete(user);
+	}
 
 }

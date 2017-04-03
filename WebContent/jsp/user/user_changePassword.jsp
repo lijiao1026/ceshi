@@ -24,7 +24,7 @@ pageEncoding="utf-8"%>
 				<div class="col-md-12"  id="firstIn">
 					<div class="form-group" >
 						<label for="oldPassword">原密码</label>
-						<input type="password" class="form-control" name="oldPassword" id="oldPassword" placeholder="请输入用户名">
+						<input type="password"  maxlength="20" class="form-control" name="oldPassword" id="oldPassword" placeholder="请输入用户名">
 					</div>
 				</div>
 
@@ -32,13 +32,13 @@ pageEncoding="utf-8"%>
 				<div class="col-md-12" >
 					<div class="form-group" >
 						<label for="newPassword">新密码</label>
-						<input type="password" class="form-control" name="newPassword" id="newPassword" placeholder="请输入用户名">
+						<input type="password"  maxlength="20" class="form-control" name="newPassword" id="newPassword" placeholder="请输入用户名">
 					</div>
 				</div>
 				<div class="col-md-12" >
 					<div class="form-group" >
 						<label for="newPasswordTwo">确认新密码</label>
-						<input type="password" class="form-control" name="newPasswordTwo" id="newPasswordTwo" placeholder="请输入用户名">
+						<input type="password"  maxlength="20" class="form-control" name="newPasswordTwo" id="newPasswordTwo" placeholder="请输入用户名">
 					</div>
 				</div>
 				<div class="modal-footer">

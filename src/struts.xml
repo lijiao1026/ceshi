@@ -32,6 +32,9 @@
 	<result name="list">/jsp/userType1/user_list.jsp</result>
 	<result name="toAdd">/jsp/userType1/user_add.jsp</result>
 	<result name="addSuccess" type="json"></result>
+	<result name="delate" type="json"></result>
+	<result name="editSuccess" type="json"></result>
+	<result name="edit">/jsp/userType1/user_update.jsp</result>
 	<result name="detail">/jsp/userType1/user_detail.jsp</result>
 	</action>
 	

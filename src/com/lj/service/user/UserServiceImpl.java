@@ -105,6 +105,18 @@ public class UserServiceImpl implements UserService {
 		pageBean.setList(list);
 		return pageBean;
 	}
+	/**
+	 * 删除用户
+	 */
+	@Override
+	public void delate(User user) {
+		userDao.delate(user);
+	}
+
+	@Override
+	public void saveUpdateUser(User user) {
+		userDao.saveUpdateUser(user);
+	}
 
 
 }

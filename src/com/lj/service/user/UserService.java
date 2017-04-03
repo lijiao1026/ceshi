@@ -53,6 +53,16 @@ public interface UserService {
 	 * @return
 	 */
 	PageBean<User> findByUsername(Integer currPage, String string, String searchUserName);
+	/**
+	 * 删除用户
+	 * @param user
+	 */
+	void delate(User user);
+	/**
+	 * 修改用户保存
+	 * @param user
+	 */
+	void saveUpdateUser(User user);
 
 
 
