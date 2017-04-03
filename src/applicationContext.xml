@@ -44,10 +44,20 @@
 	</bean>
 
 	<!-- 配置Action的类 -->
+	<!-- 注册登录所用类 -->
 	 <bean id="userAction"  class="com.lj.action.UserAction" scope="prototype">
 	<property name="userService" ref="userService"></property>
 	</bean> 
+	<!-- 患者用户所用类 -->
 	 <bean id="userType1Action"  class="com.lj.action.userType1.UserType1Action" scope="prototype">
+	<property name="userService" ref="userService"></property>
+	</bean> 
+	<!-- 管理员用户所用类 -->
+	 <bean id="userType0Action"  class="com.lj.action.userType0.UserType0Action" scope="prototype">
+	<property name="userService" ref="userService"></property>
+	</bean> 
+	<!-- 医生用户所用类 -->
+	 <bean id="userType2Action"  class="com.lj.action.userType2.UserType2Action" scope="prototype">
 	<property name="userService" ref="userService"></property>
 	</bean> 
 	<!-- 配置业务层的类 -->

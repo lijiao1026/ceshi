@@ -1,28 +1,26 @@
-package com.lj.action.userType1;
+package com.lj.action.userType0;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 import com.lj.pojo.pageBean.PageBean;
 import com.lj.pojo.user.User;
 import com.lj.service.user.UserService;
-
 import com.opensymphony.xwork2.ActionSupport;
+
 /**
- * 患者管理Action
+ * 管理员用户的action类
  * @author lij
  *
  *
  */
-public class UserType1Action extends ActionSupport{
+public class UserType0Action extends ActionSupport{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private UserService userService;	
+private UserService userService;	
 	
     public void setUserService(UserService userService) {
 		this.userService = userService;
@@ -71,7 +69,7 @@ public class UserType1Action extends ActionSupport{
   		try {
   			//因为用户类型为1的是用户 所以这里传入1
   			if(searchUserName==null||searchUserName.equals("")){
-  				PageBean<User> pageBean = userService.findByPage(currPage,"1"); 
+  				PageBean<User> pageBean = userService.findByPage(currPage,"0"); 
   				userList= pageBean.getList();
   	  			while(userList.size()<10&&userList.size()!=0){
   	  				User user=new User();
@@ -81,7 +79,7 @@ public class UserType1Action extends ActionSupport{
   	  			totalPage=pageBean.getTotalPage();
   			}else{
   			
-  	  		PageBean<User> pageBean =userService.findByUsername(currPage,"1",searchUserName);	
+  	  		PageBean<User> pageBean =userService.findByUsername(currPage,"0",searchUserName);	
 				userList= pageBean.getList();
 	  			while(userList.size()<10&&userList.size()!=0){
 	  				User user=new User();
@@ -167,7 +165,10 @@ public class UserType1Action extends ActionSupport{
 		return null;
 		}
   	}
-  	
+  	/**
+  	 * 保存更新
+  	 * @return
+  	 */
   	public String editSave(){
   		if(user!=null){
 			try {
@@ -221,7 +222,6 @@ public class UserType1Action extends ActionSupport{
 	public void setMessage(String message) {
 		this.message = message;
 	}
-
 	public Integer getUid() {
 		return uid;
 	}
@@ -229,6 +229,7 @@ public class UserType1Action extends ActionSupport{
 	public void setUid(Integer uid) {
 		this.uid = uid;
 	}
+
 
 
 }

@@ -118,7 +118,16 @@ $(document).ready(function () {
 			$(".active").attr("class","");
 			$("#menu_5").attr("class","active"); 
 			}
-
+		if(menuId==8){
+			$("#myIframe").attr("src","<%=request.getContextPath()%>/userType0!queryList.action");
+			$(".active").attr("class","");
+			$("#menu_5").attr("class","active"); 
+			}
+		if(menuId==7){
+			$("#myIframe").attr("src","<%=request.getContextPath()%>/userType2!queryList.action");
+			$(".active").attr("class","");
+			$("#menu_5").attr("class","active"); 
+			}
 	}
 
 
