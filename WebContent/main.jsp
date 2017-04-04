@@ -128,6 +128,11 @@ $(document).ready(function () {
 			$(".active").attr("class","");
 			$("#menu_5").attr("class","active"); 
 			}
+		if(menuId==9){
+			$("#myIframe").attr("src","<%=request.getContextPath()%>/sysNotice!queryList.action");
+			$(".active").attr("class","");
+			$("#menu_7").attr("class","active"); 
+			}
 	}
 
 

@@ -46,6 +46,10 @@ public class UserType2Action extends ActionSupport{
 		return searchUserName;
 	}
 
+	public void setSearchUserName(String searchUserName) {
+		this.searchUserName = searchUserName;
+	}
+
 	private User user;
 	private String message;
 	private Integer uid;
@@ -53,17 +57,14 @@ public class UserType2Action extends ActionSupport{
 
 
 
-	public void setSearchUserName(String searchUserName) {
-		this.searchUserName = searchUserName;
-	}
 
 
 
 
-
-
-
-
+	/**
+	 * 查询
+	 * @return
+	 */
 	public String queryList(){
   		try {
   			//因为用户类型为1的是用户 所以这里传入1

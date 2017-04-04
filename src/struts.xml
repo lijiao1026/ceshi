@@ -57,7 +57,16 @@
 	<result name="edit">/jsp/userType2/user_update.jsp</result>
 	<result name="detail">/jsp/userType2/user_detail.jsp</result>
 	</action>
-	
+	<!-- 公告Action -->
+	<action name="sysNotice" class="com.lj.action.sysNotice.SysNoticeAction">
+	<result name="list">/jsp/sysNotice/sysNotice_list.jsp</result>
+	<result name="toAdd">/jsp/sysNotice/sysNotice_add.jsp</result>
+	<result name="detail">/jsp/sysNotice/sysNotice_detail.jsp</result>
+	<result name="edit">/jsp/sysNotice/sysNotice_update.jsp</result>
+	<result name="addSuccess" type="json"></result>
+	<result name="editSuccess" type="json"></result>
+	<result name="delete" type="json"></result>
+	</action>
 	
 </package>
 </struts>

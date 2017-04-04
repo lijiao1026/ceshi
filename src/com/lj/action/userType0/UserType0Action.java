@@ -64,7 +64,10 @@ private UserService userService;
 
 
 
-
+	/**
+	 * 查询
+	 * @return
+	 */
 	public String queryList(){
   		try {
   			//因为用户类型为1的是用户 所以这里传入1

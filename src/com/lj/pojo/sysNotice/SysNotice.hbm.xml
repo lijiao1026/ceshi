@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.lj.pojo.sysNotice.SysNotice"  table="SYSNOTICE" lazy="false">
+	     <id name="serial"  column="serial">
+	        <generator class="native" />
+	      </id>
+        <property name="noticeTitle"  column="noticeTitle" length="50"></property>
+		<property name="noticeContent"  column="noticeContent" length="200"></property>
+		<property name="createTime"  column="createTime" length="14"></property>
+		
+</class>
+</hibernate-mapping>

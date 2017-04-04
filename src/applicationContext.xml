@@ -38,7 +38,7 @@
 		<property name="mappingResources">
 			<list>
 			<value>com/lj/pojo/user/User.hbm.xml</value>
-			
+			<value>com/lj/pojo/sysNotice/SysNotice.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -60,14 +60,44 @@
 	 <bean id="userType2Action"  class="com.lj.action.userType2.UserType2Action" scope="prototype">
 	<property name="userService" ref="userService"></property>
 	</bean> 
+	<!-- 公告所用类 -->
+	 <bean id="sysNoticeAction"  class="com.lj.action.sysNotice.SysNoticeAction" scope="prototype">
+	<property name="sysNoticeService" ref="sysNoticeService"></property>
+	</bean> 
+	
+	
+	
+	
+	
+	
+	
 	<!-- 配置业务层的类 -->
+	<!-- 用户service -->
 	 <bean id="userService" class="com.lj.service.user.UserServiceImpl">
 	<property name="userDao" ref="userDao"></property>
 	</bean>
+	<!-- 公告service -->
+	 <bean id="sysNoticeService" class="com.lj.service.sysNotice.SysNoticeServiceImpl">
+	<property name="sysNoticeDao" ref="sysNoticeDao"></property>
+	</bean>
+	
+	
+	
+	
+	
+	
 	<!-- 配置DAO的类 -->
+	<!-- 用户Dao -->
 	 <bean id="userDao" class="com.lj.dao.user.UserDaoImpl">
 	<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+	<!-- 公告Dao -->
+	 <bean id="sysNoticeDao" class="com.lj.dao.sysNotice.SysNoticeDaoImpl">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	
+	
 	
 	<!-- 配置事务管理器 -->
 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
