@@ -1,4 +1,7 @@
 package com.lj.pojo.user;
+
+import com.lj.pojo.department.Department;
+
 /**
  *用户类
  * @author lij
@@ -15,6 +18,14 @@ public class User {
      private String telPhone;//电话号码
      private String address;//家庭住址
      private String userType;//用户类型 0为超级管理员 1为患者 2为医生
+     private Department department;
+     
+	public Department getDepartment() {
+		return department;
+	}
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
 	public Integer getUid() {
 		return uid;
 	}

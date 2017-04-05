@@ -56,6 +56,10 @@ pageEncoding="utf-8"%>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/xcConfirm.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.form.js"></script>
 	<script type="text/javascript">
+	$('#modal').modal('show');
+	$('#modal').on('hidden.bs.modal', function (e) {
+				location=location;
+		})
 		function addSave() {
 			
 			if (checkParm()) {
@@ -66,7 +70,7 @@ pageEncoding="utf-8"%>
 					success:function(data){
 						if (data.message==1) {
 							window.wxc.xcConfirm("修改密码成功", window.wxc.xcConfirm.typeEnum.info);
-							$("#modalColse").click();
+							$('#modal').modal('hide');
 						}
 						else if(data.message==0){
 							window.wxc.xcConfirm("修改密码失败", window.wxc.xcConfirm.typeEnum.info);

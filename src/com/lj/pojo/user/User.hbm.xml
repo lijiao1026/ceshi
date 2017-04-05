@@ -16,5 +16,6 @@
 		<property name="telPhone"  column="telPhone" length="20"></property>
 		<property name="address"  column="address" length="20"></property>
 		<property name="userType"  column="userType" length="1"></property>
+		<many-to-one name="department" class="com.lj.pojo.department.Department" column="serial" />
 </class>
 </hibernate-mapping>

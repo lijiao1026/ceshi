@@ -74,6 +74,26 @@ pageEncoding="utf-8"%>
 				<input type="text" class="form-control"  maxlength="20"  value="${user.address}" name="user.address" id="enteraddress" placeholder="请输入地址">
 			</div>
 		</div>
+		<div class="col-md-6">
+			<div class="form-group" >
+				<label for="enterdepartment">科室</label>
+				<select id="enterdepartment" name="user.department.serial" class="selectpicker show-tick form-control" 
+				data-live-searck="false">
+						<option value="">请选择</option>
+						<s:if test="departmentList != null &&  departmentList.size != 0">
+			<s:iterator value="departmentList" status="st">
+			<option value="${serial}">${departmentName}</option>		
+			</s:iterator>
+
+			</s:if>
+					</select>		
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group" >
+			</div>
+		</div>
+
 
 		<div class="modal-footer">
 			<button type="button" class="btn btn-primary" onclick="addSave()">保存</button>

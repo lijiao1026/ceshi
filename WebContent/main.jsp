@@ -133,6 +133,11 @@ $(document).ready(function () {
 			$(".active").attr("class","");
 			$("#menu_7").attr("class","active"); 
 			}
+		if(menuId==10){
+			$("#myIframe").attr("src","<%=request.getContextPath()%>/department!queryList.action");
+			$(".active").attr("class","");
+			$("#menu_7").attr("class","active"); 
+			}
 	}
 
 

@@ -2,8 +2,10 @@ package com.lj.action.userType2;
 
 import java.util.List;
 
+import com.lj.pojo.department.Department;
 import com.lj.pojo.pageBean.PageBean;
 import com.lj.pojo.user.User;
+import com.lj.service.department.DepartmentService;
 import com.lj.service.user.UserService;
 import com.opensymphony.xwork2.ActionSupport;
 /**
@@ -24,6 +26,13 @@ public class UserType2Action extends ActionSupport{
     public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
+    private DepartmentService departmentService;
+	public void setDepartmentService(DepartmentService departmentService) {
+		this.departmentService = departmentService;
+	} 
+    
+    
+    
     /**
      * 当前页数
      */
@@ -40,7 +49,10 @@ public class UserType2Action extends ActionSupport{
      * 用户姓名查询
      */
     private String searchUserName;
-  
+    /**
+     * 科室集合
+     */
+	private List<Department> departmentList;
   
 	public String getSearchUserName() {
 		return searchUserName;
@@ -102,7 +114,8 @@ public class UserType2Action extends ActionSupport{
 	 */
   	public String toAdd(){
   		try {
-  			return "toAdd";
+  		departmentList=departmentService.findAll();
+  		return "toAdd";
 		} catch (Exception e) {
 		e.printStackTrace();
 		return null;
@@ -143,6 +156,7 @@ public class UserType2Action extends ActionSupport{
 	 */
 	public String toEdit(){
 		try {
+			departmentList=departmentService.findAll();
 			user = userService.findByUid(uid);
 			return "edit";
 		} catch (Exception e) {
@@ -226,6 +240,14 @@ public class UserType2Action extends ActionSupport{
 
 
 
+
+	public List<Department> getDepartmentList() {
+		return departmentList;
+	}
+
+	public void setDepartmentList(List<Department> departmentList) {
+		this.departmentList = departmentList;
+	}
 
 	public Integer getUid() {
 		return uid;
