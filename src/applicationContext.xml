@@ -40,6 +40,7 @@
 			<value>com/lj/pojo/user/User.hbm.xml</value>
 			<value>com/lj/pojo/sysNotice/SysNotice.hbm.xml</value>
 			<value>com/lj/pojo/department/Department.hbm.xml</value>
+			<value>com/lj/pojo/appointment/Appointment.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -48,6 +49,7 @@
 	<!-- 注册登录所用类 -->
 	 <bean id="userAction"  class="com.lj.action.UserAction" scope="prototype">
 	<property name="userService" ref="userService"></property>
+	<property name="sysNoticeService" ref="sysNoticeService"></property>
 	</bean> 
 	<!-- 患者用户所用类 -->
 	 <bean id="userType1Action"  class="com.lj.action.userType1.UserType1Action" scope="prototype">
@@ -70,7 +72,12 @@
 	 <bean id="departmentAction"  class="com.lj.action.department.DepartmentAction" scope="prototype">
 	<property name="departmentService" ref="departmentService"></property>
 	</bean> 
-	
+	<!-- 预约所用类 -->
+	 <bean id="appointmentAction"  class="com.lj.action.appointment.AppointmentAction" scope="prototype">
+	<property name="appointmentService" ref="appointmentService"></property>
+	<property name="userService" ref="userService"></property>
+	<property name="departmentService" ref="departmentService"></property>
+	</bean> 
 	
 	
 	
@@ -89,7 +96,10 @@
 	 <bean id="departmentService" class="com.lj.service.department.DepartmentServiceImpl">
 	<property name="departmentDao" ref="departmentDao"></property>
 	</bean>
-	
+	<!-- 预约service -->
+	 <bean id="appointmentService" class="com.lj.service.appointment.AppointmentServiceImpl">
+	<property name="appointmentDao" ref="appointmentDao"></property>
+	</bean>
 	
 	
 	
@@ -107,7 +117,10 @@
 	 <bean id="departmentDao" class="com.lj.dao.department.DepartmentDaoImpl">
 	<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	
+	<!-- 预约Dao -->
+	 <bean id="appointmentDao" class="com.lj.dao.appointment.AppointmentDaoImpl">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 	
 	
 	<!-- 配置事务管理器 -->

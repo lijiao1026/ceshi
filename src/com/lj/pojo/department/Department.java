@@ -7,8 +7,8 @@ package com.lj.pojo.department;
  */
 public class Department {
 	private Integer serial;//序号
-	private String departmentName;
-	private String departmentAddress;
+	private String departmentName;//科室名称
+	private String departmentAddress;//科室地址
 	public Integer getSerial() {
 		return serial;
 	}

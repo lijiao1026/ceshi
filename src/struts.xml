@@ -78,6 +78,15 @@
 	<result name="editSuccess" type="json"></result>
 	<result name="delete" type="json"></result>
 	</action>
+	<!-- 预约Action -->
+	<action name="appointment" class="com.lj.action.appointment.AppointmentAction">
+	<result name="toAppointment">/jsp/appointment/appointment_add.jsp</result>
+	<result name="list">/jsp/appointment/appointment_list.jsp</result>
+	<result name="querySuccess" type="json"></result>
+	<result name="queryDepartmentSuccess" type="json"></result>
+	<result name="addSuccess" type="json"></result>
+	</action>
+	
 	
 </package>
 </struts>

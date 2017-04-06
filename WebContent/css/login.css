@@ -4,9 +4,7 @@
  text-align:center;
  height:450px !important;
 }
-#loginForm{
 
-}
 
 .bottomCopyright{
   padding-right: 100px;
@@ -21,6 +19,20 @@
 }
 #firstIn{
  padding-top: 30px;
+}
+#appointmentIn{
+  margin-top: 50px;
+  margin-bottom: 100px;
+  padding-top: 30px;
+  padding-bottom: 70px;
+
+  border-radius: 10px;
+  border: 2px solid #ddd;
+}
+.Myjumbotron{
+	background: url("../image/jumbotron.jpg") no-repeat;
+  background-size: 100%
+
 }
 .bigTitle{
  margin-bottom: 30px;

@@ -1,4 +1,6 @@
 package com.lj.action;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +11,10 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.lj.constant.GeneralConstant;
+import com.lj.pojo.pageBean.PageBean;
+import com.lj.pojo.sysNotice.SysNotice;
 import com.lj.pojo.user.User;
+import com.lj.service.sysNotice.SysNoticeService;
 import com.lj.service.user.UserService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -34,14 +39,25 @@ public class UserAction extends ActionSupport{
     public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
+    private SysNoticeService sysNoticeService;
 	
+	public void setSysNoticeService(SysNoticeService sysNoticeService) {
+		this.sysNoticeService = sysNoticeService;
+	}
     private String userName;
     private String message;
     private Integer uid;
     private String newPassword;
     private String newPasswordTwo;
     private String oldPassword;
-    
+    /**
+     * 当前页数
+     */
+    private Integer currPage = 1;
+    /**
+     * 公告集合
+     */
+	private List<SysNotice> sysNoticeList;
     /**
      * 跳转到注册页面
      * @return
@@ -126,6 +142,20 @@ public class UserAction extends ActionSupport{
 	 */
 	public String toIndex(){
 		try {
+			PageBean<SysNotice> pageBean = sysNoticeService.findByPage(currPage); 
+			List<SysNotice> sysNoticeListFirst=new ArrayList<SysNotice>();	
+			sysNoticeListFirst=null;
+			sysNoticeListFirst= pageBean.getList();
+	  			while(sysNoticeListFirst.size()<3&&sysNoticeListFirst.size()!=0){
+	  				SysNotice sysNotice=new SysNotice();
+	  				sysNotice=null;
+	  				sysNoticeListFirst.add(sysNotice);
+	  			}
+	  			if(sysNoticeListFirst.size()>=4){
+	  				sysNoticeList=sysNoticeListFirst.subList(0, 3);
+	  			}else{
+	  				sysNoticeList=sysNoticeListFirst;
+	  			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -212,6 +242,18 @@ public class UserAction extends ActionSupport{
 	}
 	public void setOldPassword(String oldPassword) {
 		this.oldPassword = oldPassword;
+	}
+	public Integer getCurrPage() {
+		return currPage;
+	}
+	public void setCurrPage(Integer currPage) {
+		this.currPage = currPage;
+	}
+	public List<SysNotice> getSysNoticeList() {
+		return sysNoticeList;
+	}
+	public void setSysNoticeList(List<SysNotice> sysNoticeList) {
+		this.sysNoticeList = sysNoticeList;
 	}
 
 	

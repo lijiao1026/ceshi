@@ -29,7 +29,7 @@ pageEncoding="utf-8"  %>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">医疗门诊服务平台</a>
+				<a class="navbar-brand" onclick="loadIframe(1)">医疗门诊服务平台</a>
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
@@ -68,6 +68,8 @@ pageEncoding="utf-8"  %>
 						<li><a onclick="loadIframe(9)">公告管理</a></li>
 						<li role="separator" class="divider"></li>
 						<li><a onclick="loadIframe(10)">科室管理</a></li>
+							<li role="separator" class="divider"></li>
+						<li><a onclick="loadIframe(11)">预约管理</a></li>
 						
 					</ul>
 				</li>
@@ -109,7 +111,7 @@ $(document).ready(function () {
 		}
 		
 		if(menuId==2){
-			$("#myIframe").attr("src","<%=request.getContextPath()%>/user!toIndex.action");
+			$("#myIframe").attr("src","<%=request.getContextPath()%>/appointment!toAppointment.action");
 			$(".active").attr("class","");
 			$("#menu_"+menuId).attr("class","active"); 
 			}
@@ -138,6 +140,12 @@ $(document).ready(function () {
 			$(".active").attr("class","");
 			$("#menu_7").attr("class","active"); 
 			}
+		if(menuId==11){
+			$("#myIframe").attr("src","<%=request.getContextPath()%>/appointment!queryList.action");
+			$(".active").attr("class","");
+			$("#menu_7").attr("class","active"); 
+			}
+		
 	}
 
 

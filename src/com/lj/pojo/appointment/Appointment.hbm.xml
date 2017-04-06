@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.lj.pojo.appointment.Appointment"  table="APPOINTMENT" lazy="false">
+	     <id name="serial"  column="serial">
+	        <generator class="native" />
+	      </id>
+        <property name="appointmentTime"  column="appointmentTime" length="14"></property>
+		<property name="remark"  column="remark" length="200"></property>
+		<many-to-one name="departmentId" class="com.lj.pojo.department.Department" column="departmentId" />
+		<many-to-one name="userId" class="com.lj.pojo.user.User" column="userId" />
+		
+		
+</class>
+</hibernate-mapping>

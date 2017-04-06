@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8"%>
-<%@ taglib uri="/struts-tags"  prefix="s"%>    
+<%@ taglib uri="/struts-tags"  prefix="s"%> 
+<%@ taglib uri="/WEB-INF/dataformate.tld" prefix="datefmt"%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,9 +60,18 @@ pageEncoding="utf-8"%>
 			</div>
 		</nav>
 		<div class="list-group">
-			<button type="button" class="list-group-item">公告</button>
-			<button type="button" class="list-group-item">公告</button>
-			<button type="button" class="list-group-item">公告</button>	
+		<s:if test="sysNoticeList != null &&  sysNoticeList.size != 0">
+			<s:iterator value="sysNoticeList" status="st">
+			<button type="button" class="list-group-item" title="${noticeTitle}">
+			<datefmt:writeString property="${noticeTitle}"
+                            length="10" formatStr="" ellipsis="true" ></datefmt:writeString>
+                            <p class="pull-right">
+                            <datefmt:writeString formatStr="yyyy-MM-dd HH:mm:ss" property="${createTime}">
+                       </datefmt:writeString></p>
+                            </button>
+			</s:iterator>
+			</s:if>
+	
 		</div>
 
 		<nav class="navbar navbar-default">
@@ -81,7 +91,8 @@ pageEncoding="utf-8"%>
 		<div class="list-group">
 			<button type="button" class="list-group-item">预约</button>
 			<button type="button" class="list-group-item">预约</button>
-			<button type="button" class="list-group-item">预约</button>	
+			<button type="button" class="list-group-item">预约</button>
+	
 		</div>
 	</div>
 	<div class="col-lg-12 col-md-12">
