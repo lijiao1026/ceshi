@@ -11,9 +11,11 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.lj.constant.GeneralConstant;
+import com.lj.pojo.appointment.Appointment;
 import com.lj.pojo.pageBean.PageBean;
 import com.lj.pojo.sysNotice.SysNotice;
 import com.lj.pojo.user.User;
+import com.lj.service.appointment.AppointmentService;
 import com.lj.service.sysNotice.SysNoticeService;
 import com.lj.service.user.UserService;
 import com.opensymphony.xwork2.ActionContext;
@@ -44,12 +46,20 @@ public class UserAction extends ActionSupport{
 	public void setSysNoticeService(SysNoticeService sysNoticeService) {
 		this.sysNoticeService = sysNoticeService;
 	}
+	private AppointmentService appointmentService;
+	public void setAppointmentService(AppointmentService appointmentService) {
+		this.appointmentService = appointmentService;
+	}
     private String userName;
     private String message;
     private Integer uid;
     private String newPassword;
     private String newPasswordTwo;
     private String oldPassword;
+    /**
+     * 预约集合
+     */
+	private List<Appointment> appointmentList;
     /**
      * 当前页数
      */
@@ -142,6 +152,7 @@ public class UserAction extends ActionSupport{
 	 */
 	public String toIndex(){
 		try {
+			//公告栏
 			PageBean<SysNotice> pageBean = sysNoticeService.findByPage(currPage); 
 			List<SysNotice> sysNoticeListFirst=new ArrayList<SysNotice>();	
 			sysNoticeListFirst=null;
@@ -156,7 +167,21 @@ public class UserAction extends ActionSupport{
 	  			}else{
 	  				sysNoticeList=sysNoticeListFirst;
 	  			}
-			
+			//预约栏
+	  			PageBean<Appointment> pageBean2 = appointmentService.findByPage(currPage);
+	  			List<Appointment> appointmentListFirst=new ArrayList<Appointment>();
+	  			appointmentListFirst=null;
+	  			appointmentListFirst= pageBean2.getList();
+  	  			while(appointmentListFirst.size()<2&&appointmentListFirst.size()!=0){
+  	  				Appointment appointment=new Appointment();
+  	  				appointment=null;
+  	  			appointmentListFirst.add(appointment);
+  	  			}	
+  	  		if(appointmentListFirst.size()>=4){
+  				appointmentList=appointmentListFirst.subList(0, 3);
+  			}else{
+  				appointmentList=appointmentListFirst;
+  			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -254,6 +279,12 @@ public class UserAction extends ActionSupport{
 	}
 	public void setSysNoticeList(List<SysNotice> sysNoticeList) {
 		this.sysNoticeList = sysNoticeList;
+	}
+	public List<Appointment> getAppointmentList() {
+		return appointmentList;
+	}
+	public void setAppointmentList(List<Appointment> appointmentList) {
+		this.appointmentList = appointmentList;
 	}
 
 	

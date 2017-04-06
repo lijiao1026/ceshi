@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8"%>
 <%@ taglib uri="/struts-tags"  prefix="s"%> 
+<%@ taglib uri="/WEB-INF/dataformate.tld" prefix="datefmt"%>
 <!DOCTYPE html>
 <head>
 
@@ -22,37 +23,43 @@ pageEncoding="utf-8"%>
 		<div class="col-md-12"  id="firstIn">
 		<table class="table table-bordered table-striped">
 			<tr>
-				<th>用户名</th>
-				<td><s:property value="user.userName" />  </td>			
+				<th width="30%">患者姓名</th>
+				<td width="70%"><s:property value="appointment.userId.name" />  </td>			
 			</tr>
 			<tr>
-				<th>密码</th>
-				<td><s:property value="user.password" />  </td>			
-			</tr><tr>
-				<th>姓名</th>
-				<td><s:property value="user.name" />  </td>			
-			</tr><tr>
-				<th>年龄</th>
-				<td><s:property value="user.age" />  </td>			
+				<th width="30%">患者年龄</th>
+				<td width="70%"><s:property value="appointment.userId.age" />  </td>			
 			</tr>
 			<tr>
-				<th>性别</th>
-				<td>
-				<s:if test="user.sex==0">男</s:if>
-				<s:if test="user.sex==1">女</s:if>
-				 </td>			
+				<th width="30%">患者性别</th>
+				<td width="70%">
+				<s:if test="appointment.userId.sex==0">男</s:if>
+				<s:if test="appointment.userId.sex==1">女</s:if> </td>			
 			</tr>
 			<tr>
-				<th>手机号码</th>
-				<td><s:property value="user.telPhone" />  </td>			
+				<th width="30%">患者手机号码</th>
+				<td width="70%"><s:property value="appointment.userId.telPhone" />  </td>			
 			</tr>
 			<tr>
-				<th>家庭地址</th>
-				<td><s:property value="user.address" />  </td>			
+				<th width="30%">家庭地址</th>
+				<td width="70%"><s:property value="appointment.userId.address" />  </td>			
 			</tr>
 			<tr>
-				<th>科室名称</th>
-				<td><s:property value="user.department.departmentName" />  </td>			
+				<th width="30%">科室名称</th>
+				<td width="70%"><s:property value="appointment.departmentId.departmentName" />  </td>			
+			</tr>
+			<tr>
+				<th width="30%">科室地址</th>
+				<td width="70%"><s:property value="appointment.departmentId.departmentAddress" />  </td>			
+			</tr>
+			<tr>
+				<th width="30%">创建时间</th>
+				<td width="70%"><datefmt:writeString formatStr="yyyy-MM-dd HH:mm:ss" property="${appointment.appointmentTime}">
+                       </datefmt:writeString>  </td>			
+			</tr>
+			<tr>
+				<th width="30%">备注</th>
+				<td width="70%"><s:property value="appointment.remark" />  </td>			
 			</tr>
 		</table>
 	</div>
@@ -72,5 +79,8 @@ pageEncoding="utf-8"%>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.form.js"></script>
 <script type="text/javascript">
 
-
+$('#modal').modal('show');
+$('#modal').on('hidden.bs.modal', function (e) {
+			queryList();
+	})
 </script>

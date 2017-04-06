@@ -182,6 +182,37 @@ public class AppointmentAction extends ActionSupport{
 		return "list";
 	}
 	
+	/**
+	 * 查看
+	 * @return
+	 */
+	public String toDetail(){
+		try {
+			appointment = appointmentService.findById(serial);
+			return "detail";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+	
+	/**
+	 * 删除预约
+	 * @return
+	 */
+  	public String delete(){
+  		try {
+			appointment = appointmentService.findById(serial);
+			appointmentService.delete(appointment);
+  			message="1";
+  			return "delete";
+		} catch (Exception e) {
+		e.printStackTrace();
+		return null;
+		}
+  	}
+	
 	
 	public Integer getCurrPage() {
 		return currPage;
@@ -242,6 +273,12 @@ public class AppointmentAction extends ActionSupport{
 	}
 	public void setSearchName(String searchName) {
 		this.searchName = searchName;
+	}
+	public Integer getSerial() {
+		return serial;
+	}
+	public void setSerial(Integer serial) {
+		this.serial = serial;
 	}
 	
 }

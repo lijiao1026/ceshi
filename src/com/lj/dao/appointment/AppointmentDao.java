@@ -36,5 +36,16 @@ public interface AppointmentDao {
 	 * @return
 	 */
 	List<Appointment> findByPageByName(int begin, int pageSize, String searchName);
+	/**
+	 * 根据序号查询
+	 * @param serial
+	 * @return
+	 */
+	Appointment findById(Integer serial);
+	/**
+	 * 删除预约
+	 * @param appointment
+	 */
+	void delete(Appointment appointment);
 
 }

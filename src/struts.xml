@@ -85,6 +85,8 @@
 	<result name="querySuccess" type="json"></result>
 	<result name="queryDepartmentSuccess" type="json"></result>
 	<result name="addSuccess" type="json"></result>
+	<result name="detail">/jsp/appointment/appointment_detail.jsp</result>
+	<result name="delete" type="json"></result>
 	</action>
 	
 	

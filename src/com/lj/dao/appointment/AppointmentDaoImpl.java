@@ -61,4 +61,22 @@ public class AppointmentDaoImpl extends HibernateDaoSupport implements Appointme
 		return list;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public Appointment findById(Integer serial) {
+		String hql="from Appointment where serial= ?";
+		List<Appointment> list=this.getHibernateTemplate().find(hql, serial);
+		if(list.size() > 0){
+			return list.get(0);
+		}else{
+			
+			return null;
+		}
+	}
+
+	@Override
+	public void delete(Appointment appointment) {
+		this.getHibernateTemplate().delete(appointment);
+	}
+
 }

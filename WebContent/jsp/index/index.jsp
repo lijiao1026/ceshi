@@ -12,6 +12,13 @@ pageEncoding="utf-8"%>
 	<link href="<%=request.getContextPath()%>/css/xcConfirm.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<!-- 	模态窗内容加载位置 -->
+			</div>
+		</div>
+	</div>		
 	
 	<div class="col-lg-8 col-md-8">
 		<div id="myCarousel" class="carousel slide" data-interval="2000" data-ride="carousel">
@@ -24,13 +31,13 @@ pageEncoding="utf-8"%>
 			<!-- 轮播（Carousel）项目 -->
 			<div class="carousel-inner">
 				<div class="item active">
-					<img src="<%=request.getContextPath()%>/image/login1.jpg"  alt="First slide">
+					<img src="<%=request.getContextPath()%>/image/login1.jpg"  class="img-responsive" alt="First slide">
 				</div>
 				<div class="item">
-					<img src="<%=request.getContextPath()%>/image/login2.jpg"  alt="Second slide">
+					<img src="<%=request.getContextPath()%>/image/login2.jpg"    class="img-responsive" alt="Second slide">
 				</div>
 				<div class="item">
-					<img src="<%=request.getContextPath()%>/image/login3.jpg"  alt="Third slide">
+					<img src="<%=request.getContextPath()%>/image/login3.jpg"  class="img-responsive" alt="Third slide">
 				</div>
 			</div>
 			<!-- 轮播（Carousel）导航 -->
@@ -62,7 +69,7 @@ pageEncoding="utf-8"%>
 		<div class="list-group">
 		<s:if test="sysNoticeList != null &&  sysNoticeList.size != 0">
 			<s:iterator value="sysNoticeList" status="st">
-			<button type="button" class="list-group-item" title="${noticeTitle}">
+			<button type="button" class="list-group-item" title="${noticeTitle}" data-toggle="modal" data-target="#modal"  href="<%=request.getContextPath()%>/sysNotice!toDetail.action?serial=<s:property value="serial" />">
 			<datefmt:writeString property="${noticeTitle}"
                             length="10" formatStr="" ellipsis="true" ></datefmt:writeString>
                             <p class="pull-right">
@@ -89,9 +96,18 @@ pageEncoding="utf-8"%>
 			</div>
 		</nav>
 		<div class="list-group">
-			<button type="button" class="list-group-item">预约</button>
-			<button type="button" class="list-group-item">预约</button>
-			<button type="button" class="list-group-item">预约</button>
+		<s:if test="appointmentList != null &&  appointmentList.size != 0">
+			<s:iterator value="appointmentList" status="st">
+			<button type="button" class="list-group-item" data-toggle="modal" data-target="#modal"  href="<%=request.getContextPath()%>/appointment!toDetail.action?serial=<s:property value="serial" />">
+			${userId.name}用户预约了${departmentId.departmentName} 
+			 <p class="pull-right">
+                            <datefmt:writeString formatStr="yyyy-MM-dd HH:mm:ss" property="${appointmentTime}">
+                       </datefmt:writeString></p>
+                         
+			</button>
+			</s:iterator>
+			</s:if>
+			
 	
 		</div>
 	</div>
@@ -109,5 +125,12 @@ pageEncoding="utf-8"%>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/bootstrap.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/xcConfirm.js"></script>
+	<script type="text/javascript">
+		function queryList() {
+			// body...
+			location.reload();
+		}
+
+	</script>
 </body>
 </html>

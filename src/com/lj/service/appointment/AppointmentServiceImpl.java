@@ -74,5 +74,25 @@ public class AppointmentServiceImpl implements AppointmentService {
 		return pageBean;
 	}
 
+	@Override
+	public Appointment findById(Integer serial) {
+		try {
+			Appointment appointment=appointmentDao.findById(serial);
+			return appointment;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+			return null;
+	}
+
+	@Override
+	public void delete(Appointment appointment) {
+		try {
+			appointmentDao.delete(appointment);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 
 }
