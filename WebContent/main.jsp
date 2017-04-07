@@ -115,6 +115,16 @@ $(document).ready(function () {
 			$(".active").attr("class","");
 			$("#menu_"+menuId).attr("class","active"); 
 			}
+		if(menuId==4){
+			$("#myIframe").attr("src","<%=request.getContextPath()%>/medicine!toAdd.action");
+			$(".active").attr("class","");
+			$("#menu_"+menuId).attr("class","active"); 
+			}
+		if(menuId==5){
+			$("#myIframe").attr("src","<%=request.getContextPath()%>/medicine!queryList.action");
+			$(".active").attr("class","");
+			$("#menu_4").attr("class","active"); 
+			}
 		if(menuId==6){
 			$("#myIframe").attr("src","<%=request.getContextPath()%>/userType1!queryList.action");
 			$(".active").attr("class","");

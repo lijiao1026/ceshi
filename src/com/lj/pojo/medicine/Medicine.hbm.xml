@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.lj.pojo.medicine.Medicine"  table="MEDICINE" lazy="false">
+	     <id name="serial"  column="serial">
+	        <generator class="native" />
+	      </id>
+        <property name="medicineType"  column="medicineType" length="20"></property>
+		<property name="productionDate"  column="productionDate" length="8"></property>
+		<property name="expireDate"  column="expireDate" length="8"></property>
+		<property name="medicineName"  column="medicineName" length="20"></property>
+		<property name="medicineStore"  column="medicineStore" length="12"></property>
+		<property name="medicineSupply"  column="medicineSupply" length="12"></property>
+		<property name="medicineSuppier"  column="medicineSuppier" length="20"></property>
+		<property name="SuppierPhone"  column="SuppierPhone" length="20"></property>
+		<property name="unitPrice"  column="unitPrice" length="12"></property>
+		<property name="inTime"  column="inTime" length="14"></property>
+		<property name="medicineSale"  column="medicineSale" length="14"></property>
+		<property name="remark"  column="remark" length="200"></property>
+		<many-to-one name="userId" class="com.lj.pojo.user.User" column="userId" />
+		
+		
+		
+</class>
+</hibernate-mapping>

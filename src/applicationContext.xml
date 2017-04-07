@@ -41,6 +41,7 @@
 			<value>com/lj/pojo/sysNotice/SysNotice.hbm.xml</value>
 			<value>com/lj/pojo/department/Department.hbm.xml</value>
 			<value>com/lj/pojo/appointment/Appointment.hbm.xml</value>
+			<value>com/lj/pojo/medicine/Medicine.hbm.xml</value>	
 			</list>
 		</property>
 	</bean>
@@ -79,7 +80,10 @@
 	<property name="userService" ref="userService"></property>
 	<property name="departmentService" ref="departmentService"></property>
 	</bean> 
-	
+	<!-- 药品所用类 -->
+	 <bean id="medicineAction"  class="com.lj.action.medicine.MedicineAction" scope="prototype">
+	<property name="medicineService" ref="medicineService"></property>
+	</bean> 
 	
 	
 	
@@ -101,7 +105,10 @@
 	 <bean id="appointmentService" class="com.lj.service.appointment.AppointmentServiceImpl">
 	<property name="appointmentDao" ref="appointmentDao"></property>
 	</bean>
-	
+	<!-- 药品service -->
+	 <bean id="medicineService" class="com.lj.service.medicine.MedicineServiceImpl">
+	<property name="medicineDao" ref="medicineDao"></property>
+	</bean>
 	
 	
 	
@@ -122,7 +129,10 @@
 	 <bean id="appointmentDao" class="com.lj.dao.appointment.AppointmentDaoImpl">
 	<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	
+	<!-- 预约Dao -->
+	 <bean id="medicineDao" class="com.lj.dao.medicine.MedicineDaoImpl">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 	
 	<!-- 配置事务管理器 -->
 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">

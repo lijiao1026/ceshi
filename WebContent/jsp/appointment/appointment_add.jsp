@@ -15,6 +15,20 @@ pageEncoding="utf-8"%>
 
 </head>
 <body>
+	<div class="col-lg-12 col-md-12">
+		<nav class="navbar navbar-default">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">挂号预约</a>
+			</div>
+			
+		</nav>
+	</div>
 	<div class="col-lg-6 col-md-6">
 		<div class="jumbotron Myjumbotron">
 			<h2>预约方法:</h2>
@@ -149,6 +163,7 @@ pageEncoding="utf-8"%>
 								if (data.message==1) {
 									window.wxc.xcConfirm("预约成功", window.wxc.xcConfirm.typeEnum.info);
 									$("#enterappointmenttime").val("");
+									$("#enterappointmentremark").val("");
 									location.reload();
 								}
 								
