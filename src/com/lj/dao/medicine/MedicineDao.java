@@ -52,5 +52,11 @@ public interface MedicineDao {
 	 * @param medicine
 	 */
 	void updateMedicine(Medicine medicine);
+	/**
+	 * 根据sql查询
+	 * @param sql
+	 * @return
+	 */
+	List<Object[]> findBySql(String sql);
 
 }

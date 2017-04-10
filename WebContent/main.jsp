@@ -61,7 +61,7 @@ pageEncoding="utf-8"  %>
 						<li><a onclick="loadIframe(8)">管理员用户管理</a></li>    
 					</ul>
 				</li>
-				<li id="menu_6"><a href="#">统计分析</a></li>
+				<li id="menu_6" ><a onclick="loadIframe(13)">统计分析</a></li>
 				<li class="dropdown" id="menu_7">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">系统管理 <span class="caret"></span></a>
 					<ul class="dropdown-menu">
@@ -165,6 +165,11 @@ $(document).ready(function () {
 			$("#myIframe").attr("src","<%=request.getContextPath()%>/userCase!queryList.action");
 			$(".active").attr("class","");
 			$("#menu_7").attr("class","active"); 
+			}
+		if(menuId==13){
+			$("#myIframe").attr("src","<%=request.getContextPath()%>/medicine!toTable.action");
+			$(".active").attr("class","");
+			$("#menu_6").attr("class","active"); 
 			}
 		
 	}

@@ -92,7 +92,9 @@
 	<action name="medicine" class="com.lj.action.medicine.MedicineAction">
 	<result name="toAdd">/jsp/medicine/medicine_add.jsp</result>
 	<result name="addSuccess" type="json"></result>
+	<result name="createSuccess" type="json"></result>
 	<result name="list">/jsp/medicine/medicine_list.jsp</result>
+	<result name="toTable">/jsp/medicine/medicine_table.jsp</result>
 	<result name="detail">/jsp/medicine/medicine_detail.jsp</result>
 	</action>
 	<!-- 病例Action -->
@@ -103,6 +105,7 @@
 	<result name="queryUser" type="json"></result>
 	<result name="queryMedicine" type="json"></result>
 	<result name="addSuccess" type="json"></result>
+	<result name="detail">/jsp/userCase/userCase_detail.jsp</result>
 	</action>
 	
 </package>

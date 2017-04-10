@@ -50,9 +50,22 @@ public class UserCaseDaoImpl  extends HibernateDaoSupport implements UserCaseDao
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<UserCase> findByPageBySearch(int begin, int pageSize, String userCaseSearch) {
-		DetachedCriteria criteria = DetachedCriteria.forClass(UserCase.class).createAlias("appointmentId", "appointmentId").createAlias("appointmentId.userId", "appointmentId.userId").add(Restrictions.like("appointmentId.userId.name", "%"+userCaseSearch+"%"));
+		DetachedCriteria criteria = DetachedCriteria.forClass(UserCase.class).createAlias("appointmentId", "appointmentId").createAlias("appointmentId.userId", "appointmentuserId").add(Restrictions.like("appointmentuserId.name", "%"+userCaseSearch+"%"));
 		List<UserCase> list = this.getHibernateTemplate().findByCriteria(criteria, begin, pageSize);
 		return list;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public UserCase findById(Integer serial) {
+		String hql="from UserCase where serial= ?";
+		List<UserCase> list=this.getHibernateTemplate().find(hql, serial);
+		if(list.size() > 0){
+			return list.get(0);
+		}else{
+			
+			return null;
+		}
 	}
 
 }

@@ -13,8 +13,12 @@ import com.lj.pojo.pageBean.PageBean;
 import com.lj.pojo.user.User;
 import com.lj.service.medicine.MedicineService;
 import com.lj.util.GeneralUtils;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 public class MedicineAction extends ActionSupport{
 
@@ -46,7 +50,9 @@ public class MedicineAction extends ActionSupport{
     /**
      * 药品序号
      */
-    private Integer serial;   
+    private Integer serial;  
+    
+    private JSONObject medicineData;
     
 	/**
 	 * 跳转到预约页面
@@ -137,6 +143,45 @@ public class MedicineAction extends ActionSupport{
 		}
 		
 	}
+	
+	public String createTable(){
+		JSONArray jsArr = null;
+        JSONObject result = null;
+		try {
+			String sql="select m.medicineName,m.medicineStore,m.medicineSupply,m.medicineSale from MEDICINE m";
+			jsArr = new JSONArray();
+			List<Object[]> tmpObjList = medicineService.findBySql(sql);
+            JSONArray jsArrMedicineName = new JSONArray();
+            JSONArray jsArrMedicineStore = new JSONArray();
+            JSONArray jsArrMedicineSupply = new JSONArray();
+            JSONArray jsArrMedicineSale = new JSONArray();
+            for(int j=0;j<tmpObjList.size();j++){
+            	jsArrMedicineName.add(tmpObjList.get(j)[0]);
+            	jsArrMedicineStore.add(tmpObjList.get(j)[1]);
+            	jsArrMedicineSupply.add(tmpObjList.get(j)[2]);
+            	jsArrMedicineSale.add(tmpObjList.get(j)[3]);
+            }
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("medicineName", jsArrMedicineName);
+            jsObj.put("medicineStore", jsArrMedicineStore);
+            jsObj.put("medicineSupply", jsArrMedicineSupply);
+            jsObj.put("medicineSale", jsArrMedicineSale);
+            jsArr.add(jsObj);
+            
+            
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		result = new JSONObject();
+		result.put("rows", jsArr);
+		medicineData=result;
+		return "createSuccess";
+	}
+	
+	public String toTable(){
+		return "toTable";
+	}
+	
 	/**
 	 * 获取系统时间
 	 * @return
@@ -190,6 +235,12 @@ public class MedicineAction extends ActionSupport{
 	}
 	public void setSerial(Integer serial) {
 		this.serial = serial;
+	}
+	public JSONObject getMedicineData() {
+		return medicineData;
+	}
+	public void setMedicineData(JSONObject medicineData) {
+		this.medicineData = medicineData;
 	}
 	
 	

@@ -2,12 +2,15 @@ package com.lj.dao.medicine;
 
 import java.util.List;
 
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.lj.pojo.appointment.Appointment;
 import com.lj.pojo.medicine.Medicine;
+
 /**
  * 药品Dao类
  * @author lij
@@ -75,6 +78,19 @@ public class MedicineDaoImpl extends HibernateDaoSupport implements MedicineDao 
 	@Override
 	public void updateMedicine(Medicine medicine) {
 		this.getHibernateTemplate().update(medicine);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Object[]> findBySql(String sql) {
+		   	Session session = this.getSession(true);
+	        SQLQuery query = session.createSQLQuery(sql);
+	        List<Object[]> list = query.list();
+	        
+	        releaseSession(session);
+	        query = null;
+	        
+	        return list;
 	}
 
 }

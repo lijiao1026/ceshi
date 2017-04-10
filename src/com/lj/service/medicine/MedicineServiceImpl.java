@@ -93,5 +93,15 @@ public class MedicineServiceImpl implements MedicineService {
 		}
 	}
 
+	@Override
+	public List<Object[]> findBySql(String sql) {
+		try {
+			 return medicineDao.findBySql(sql);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 	
 }

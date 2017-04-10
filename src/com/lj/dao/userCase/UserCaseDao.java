@@ -36,5 +36,11 @@ public interface UserCaseDao {
 	 * @return
 	 */
 	List<UserCase> findByPageBySearch(int begin, int pageSize, String userCaseSearch);
+	/**
+	 * 根据序号查询
+	 * @param serial
+	 * @return
+	 */
+	UserCase findById(Integer serial);
 
 }

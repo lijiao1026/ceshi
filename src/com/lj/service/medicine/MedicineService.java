@@ -1,5 +1,7 @@
 package com.lj.service.medicine;
 
+import java.util.List;
+
 import com.lj.pojo.medicine.Medicine;
 import com.lj.pojo.pageBean.PageBean;
 /**
@@ -38,5 +40,11 @@ public interface MedicineService {
 	 * @param medicine
 	 */
 	void updateMedicine(Medicine medicine);
+	/**
+	 * 根据sql语句查询
+	 * @param sql
+	 * @return
+	 */
+	List<Object[]> findBySql(String sql);
 
 }

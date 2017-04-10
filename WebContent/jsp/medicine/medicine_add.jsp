@@ -188,7 +188,7 @@ pageEncoding="utf-8"%>
 			window.wxc.xcConfirm("请输入供应量", window.wxc.xcConfirm.typeEnum.info);
 			return false;
 		}
-		if (checkNumber(entermedicineSupply)) {
+		if (!checkNumber(entermedicineSupply)) {
 			window.wxc.xcConfirm("供应量请输入数字", window.wxc.xcConfirm.typeEnum.info);
 			return false;
 		}
@@ -207,7 +207,7 @@ pageEncoding="utf-8"%>
 			window.wxc.xcConfirm("您输入的手机号码格式有误", window.wxc.xcConfirm.typeEnum.info);
 			return false;
 		}
-		if (checkNumber(enterunitPrice)) {
+		if (!checkNumber(enterunitPrice)) {
 			window.wxc.xcConfirm("单价请输入数字", window.wxc.xcConfirm.typeEnum.info);
 			return false;
 		}
@@ -224,12 +224,13 @@ pageEncoding="utf-8"%>
 			$("#enterremark").val("");
 			$("#enterSuppierPhone").val("");
 		})
-				function checkNumber(theObj) {
+function checkNumber(theObj) {
   var reg = /^[0-9]+.?[0-9]*$/;
   if (reg.test(theObj)) {
     return true;
   }
   return false;
+		}
 </script>
 </body>
 </html>

@@ -65,8 +65,8 @@ pageEncoding="utf-8"%>
 				<td width="20%">就诊时间</td>
 				<td width="10%">操作</td>
 			</tr>
-			<s:if test="medicineList != null &&  medicineList.size != 0">
-			<s:iterator value="medicineList" status="st">
+			<s:if test="userCaseList != null &&  userCaseList.size != 0">
+			<s:iterator value="userCaseList" status="st">
 			<tr>
 				<td>
 
@@ -76,33 +76,33 @@ pageEncoding="utf-8"%>
 				<datefmt:writeString property="${appointmentId.appointmentSerial}"
                             length="20" formatStr="" ellipsis="true" ></datefmt:writeString>
 				</td>
-				<td title="${medicineType}">
-				<datefmt:writeString property="${medicineType}"
+				<td title="${appointmentId.userId.name}">
+				<datefmt:writeString property="${appointmentId.userId.name}"
                             length="10" formatStr="" ellipsis="true" ></datefmt:writeString>
 				</td>
 				
-				<td >
-				<s:property value="medicineStore" />
-			
-				</td>
-					<td title="${medicineSuppier}">
-				<datefmt:writeString property="${medicineSuppier}"
-                            length="10" formatStr="" ellipsis="true" ></datefmt:writeString>
-				</td>
 				<td title="${userId.name}">
 				<datefmt:writeString property="${userId.name}"
                             length="10" formatStr="" ellipsis="true" ></datefmt:writeString>
 				</td>
+					<td title="${MedicineId.medicineName}">
+				<datefmt:writeString property="${MedicineId.medicineName}"
+                            length="10" formatStr="" ellipsis="true" ></datefmt:writeString>
+				</td>
+				<td title="${caseFree}">
+				<datefmt:writeString property="${caseFree}"
+                            length="12" formatStr="" ellipsis="true" ></datefmt:writeString>
+				</td>
 				
 				<td >
-				<datefmt:writeString formatStr="yyyy-MM-dd HH:mm:ss" property="${inTime}">
+				<datefmt:writeString formatStr="yyyy-MM-dd HH:mm:ss" property="${caseTime}">
                        </datefmt:writeString>
 			
 				</td>
 				<td>
-					<s:if test="medicineName!=null">
-					<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal"  href="<%=request.getContextPath()%>/medicine!toDetail.action?serial=<s:property value="serial" />">查看</button>
-					<%-- <button type="button" class="btn btn-warning btn-xs"  data-toggle="modal" data-target="#modal" href="<%=request.getContextPath()%>/medicine!toEdit.action?serial=<s:property value="serial" />" >修改</button>
+					<s:if test="caseTime!=null">
+					<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal"  href="<%=request.getContextPath()%>/userCase!toDetail.action?serial=<s:property value="serial" />">查看</button>
+					<%-- <button type="button" class="btn btn-warning btn-xs"  data-toggle="modal" data-target="#modal" href="<%=request.getContextPath()%>/userCase!toEdit.action?serial=<s:property value="serial" />" >修改</button>
 					<button type="button" class="btn btn-danger btn-xs" onclick="deleteUser(${serial})">删除</button> --%>
 				</s:if>
 				
@@ -125,7 +125,7 @@ pageEncoding="utf-8"%>
 		<ul class="pagination  pagination-lg pagination-right">
 			<li id="Previous">
 				<s:if test="currPage!=1">
-				<a href="${pageContext.request.contextPath}/medicine!queryList.action?currPage=<s:property value="currPage-1" />" aria-label="Previous">
+				<a href="${pageContext.request.contextPath}/userCase!queryList.action?currPage=<s:property value="currPage-1" />" aria-label="Previous">
 				<span aria-hidden="true">&laquo;</span>
 			</a>
 		</s:if>
@@ -134,7 +134,7 @@ pageEncoding="utf-8"%>
 
 	<li>
 		<s:if test="currPage!=totalPage&&totalPage!=0">
-		<a href="${pageContext.request.contextPath}/medicine!queryList.action?currPage=<s:property value="currPage+1" />" aria-label="Next">
+		<a href="${pageContext.request.contextPath}/userCase!queryList.action?currPage=<s:property value="currPage+1" />" aria-label="Next">
 		<span aria-hidden="true">&raquo;</span>
 	</a>
 </s:if>
@@ -161,15 +161,15 @@ pageEncoding="utf-8"%>
 		var pageTotal="${totalPage}";
 		var pageNo="";
 		for(var i=1;i<=pageTotal;i++){
-			pageNo+="<li><a href={pageContext.request.contextPath}/medicine!queryList.action?currPage="+i+">"+i+"</a></li>"
+			pageNo+="<li><a href={pageContext.request.contextPath}/userCase!queryList.action?currPage="+i+">"+i+"</a></li>"
 		}
 		$("#Previous").after(pageNo);
 	})
 	$("#searchStart").click(function () {
 		// body...
 		var currPage=$("#currPage").val();
-		var searchmedicineName=$("#searchmedicineName").val();
-		$("#searchForm").action="{pageContext.request.contextPath}/medicine!queryList.action?currPage="+currPage+"&searchmedicineName="+searchmedicineName;
+		var searchuserCaseName=$("#searchuserCaseName").val();
+		$("#searchForm").action="{pageContext.request.contextPath}/userCase!queryList.action?currPage="+currPage+"&searchuserCaseName="+searchuserCaseName;
 		$("#searchForm").submit();
 	})
 	function queryList(){
@@ -184,7 +184,7 @@ pageEncoding="utf-8"%>
 				{
 					type : 'get',
 					dataType : 'json',
-					url : 'medicine!delete.action',
+					url : 'userCase!delete.action',
 					async : false,
 					data :
 					{

@@ -67,6 +67,17 @@ public class UserCaseServiceImpl implements UserCaseService{
 		return pageBean;
 	}
 
+	@Override
+	public UserCase findById(Integer serial) {
+		try {
+			UserCase userCase=userCaseDao.findById(serial);
+			return userCase;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+			return null;
+	}
+
 	
 	
 }

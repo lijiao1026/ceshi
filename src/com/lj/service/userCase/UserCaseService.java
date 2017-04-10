@@ -22,5 +22,11 @@ public interface UserCaseService {
 	 * @return
 	 */
 	PageBean<UserCase> findBySearch(Integer currPage, String userCaseSearch);
+	/**
+	 * 根据序号查询
+	 * @param serial
+	 * @return
+	 */
+	UserCase findById(Integer serial);
 
 }

@@ -99,6 +99,10 @@ public class UserCaseAction extends ActionSupport{
 	 */
 	private Integer totalPage;
 	/**
+	 * 序号查询
+	 */
+	private Integer serial;
+	/**
 	 * 预约对象
 	 */
 	private Appointment appointment;
@@ -147,7 +151,20 @@ public class UserCaseAction extends ActionSupport{
 			}
 			return "queryAppointment";	
 		}
-		
+		/**
+		 * 查看
+		 * @return
+		 */
+		public String toDetail(){
+			try {
+				userCase = userCaseService.findById(serial);
+				return "detail";
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+			
+		}
 		/**
 		 * 动态查询医生
 		 * @return
@@ -212,7 +229,7 @@ public class UserCaseAction extends ActionSupport{
 		 */
 		public String queryList(){
 	  		try {
-	  			//因为用户类型为1的是用户 所以这里传入1
+	  		
 	  			if(userCaseSearch==null||userCaseSearch.equals("")){
 	  				PageBean<UserCase> pageBean = userCaseService.findByPage(currPage); 
 	  				userCaseList= pageBean.getList();
@@ -252,7 +269,7 @@ public class UserCaseAction extends ActionSupport{
 	        String SysTime = format.format(date);
 	        return SysTime;
 	    }
-		
+	
 	    
 		
 		public String getQ() {
@@ -357,6 +374,14 @@ public class UserCaseAction extends ActionSupport{
 
 		public void setUserCaseSearch(String userCaseSearch) {
 			this.userCaseSearch = userCaseSearch;
+		}
+
+		public Integer getSerial() {
+			return serial;
+		}
+
+		public void setSerial(Integer serial) {
+			this.serial = serial;
 		}
 
 		
