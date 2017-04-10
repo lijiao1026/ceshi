@@ -84,5 +84,14 @@ public class MedicineServiceImpl implements MedicineService {
 			return null;
 	}
 
+	@Override
+	public void updateMedicine(Medicine medicine) {
+		try {
+			medicineDao.updateMedicine(medicine);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	
 }

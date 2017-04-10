@@ -33,5 +33,25 @@ public interface AppointmentService {
 	 * @param appointment
 	 */
 	void delete(Appointment appointment);
+	/**
+	 * 根据预约编号查询
+	 * @param currPage
+	 * @param string
+	 * @param q
+	 * @return
+	 */
+	PageBean<Appointment> findByAppointSerial(Integer currPage, String string, String q);
+	/**
+	 * 更新预约
+	 * @param appointment
+	 */
+	void updateAppointment(Appointment appointment);
+	/**
+	 * 首页查询
+	 * @param currPage
+	 * @param string
+	 * @return
+	 */
+	PageBean<Appointment> findByPageAndStatus(Integer currPage, String string);
 
 }

@@ -68,9 +68,10 @@ pageEncoding="utf-8"  %>
 						<li><a onclick="loadIframe(9)">公告管理</a></li>
 						<li role="separator" class="divider"></li>
 						<li><a onclick="loadIframe(10)">科室管理</a></li>
-							<li role="separator" class="divider"></li>
+						<li role="separator" class="divider"></li>
 						<li><a onclick="loadIframe(11)">预约管理</a></li>
-						
+						<li role="separator" class="divider"></li>
+						<li><a onclick="loadIframe(12)">收费记录管理</a></li>
 					</ul>
 				</li>
 			</s:if>
@@ -115,6 +116,11 @@ $(document).ready(function () {
 			$(".active").attr("class","");
 			$("#menu_"+menuId).attr("class","active"); 
 			}
+		if(menuId==3){
+			$("#myIframe").attr("src","<%=request.getContextPath()%>/userCase!toAdd.action");
+			$(".active").attr("class","");
+			$("#menu_"+menuId).attr("class","active"); 
+			}
 		if(menuId==4){
 			$("#myIframe").attr("src","<%=request.getContextPath()%>/medicine!toAdd.action");
 			$(".active").attr("class","");
@@ -152,6 +158,11 @@ $(document).ready(function () {
 			}
 		if(menuId==11){
 			$("#myIframe").attr("src","<%=request.getContextPath()%>/appointment!queryList.action");
+			$(".active").attr("class","");
+			$("#menu_7").attr("class","active"); 
+			}
+		if(menuId==12){
+			$("#myIframe").attr("src","<%=request.getContextPath()%>/userCase!queryList.action");
 			$(".active").attr("class","");
 			$("#menu_7").attr("class","active"); 
 			}

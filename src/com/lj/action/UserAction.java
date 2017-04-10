@@ -168,7 +168,7 @@ public class UserAction extends ActionSupport{
 	  				sysNoticeList=sysNoticeListFirst;
 	  			}
 			//预约栏
-	  			PageBean<Appointment> pageBean2 = appointmentService.findByPage(currPage);
+	  			PageBean<Appointment> pageBean2 = appointmentService.findByPageAndStatus(currPage,"0");
 	  			List<Appointment> appointmentListFirst=new ArrayList<Appointment>();
 	  			appointmentListFirst=null;
 	  			appointmentListFirst= pageBean2.getList();

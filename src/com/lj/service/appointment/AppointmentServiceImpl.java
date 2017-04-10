@@ -94,5 +94,58 @@ public class AppointmentServiceImpl implements AppointmentService {
 		}
 	}
 
+	@Override
+	public PageBean<Appointment> findByAppointSerial(Integer currPage, String string, String q) {
+		PageBean<Appointment> pageBean=new PageBean<Appointment>();
+		//封装当前的页数
+		pageBean.setCurrPage(currPage);
+		//封装每页显示的记录数
+		int pageSize = 10;
+		pageBean.setPageSize(pageSize);
+		//封装总记录数
+		int totalCount = appointmentDao.findCountByAppointmentSerial(q,string);
+		pageBean.setTotalCount(totalCount);
+		//封装总页数
+		double tc = totalCount;
+		Double num = Math.ceil(tc / pageSize);
+		pageBean.setTotalPage(num.intValue());
+		//封装每页显示的数据
+		int begin = (currPage - 1) * pageSize;
+		List<Appointment> list = appointmentDao.findByPageByAppointmentSerial(begin,pageSize,q,string);
+		pageBean.setList(list);
+		return pageBean;
+	}
+
+	@Override
+	public void updateAppointment(Appointment appointment) {
+		try {
+			appointmentDao.updateAppointment(appointment);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public PageBean<Appointment> findByPageAndStatus(Integer currPage, String string) {
+		PageBean<Appointment> pageBean=new PageBean<Appointment>();
+		//封装当前的页数
+		pageBean.setCurrPage(currPage);
+		//封装每页显示的记录数
+		int pageSize = 10;
+		pageBean.setPageSize(pageSize);
+		//封装总记录数
+		int totalCount = appointmentDao.findCountByStatus(string);
+		pageBean.setTotalCount(totalCount);
+		//封装总页数
+		double tc = totalCount;
+		Double num = Math.ceil(tc / pageSize);
+		pageBean.setTotalPage(num.intValue());
+		//封装每页显示的数据
+		int begin = (currPage - 1) * pageSize;
+		List<Appointment> list = appointmentDao.findByPageByStatus(begin,pageSize,string);
+		pageBean.setList(list);
+		return pageBean;
+	}
+
 
 }

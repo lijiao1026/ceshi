@@ -47,5 +47,10 @@ public interface MedicineDao {
 	 * @return
 	 */
 	Medicine findById(Integer serial);
+	/**
+	 * 更新药品
+	 * @param medicine
+	 */
+	void updateMedicine(Medicine medicine);
 
 }

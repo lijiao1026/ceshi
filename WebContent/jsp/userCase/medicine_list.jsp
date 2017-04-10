@@ -12,8 +12,8 @@ pageEncoding="utf-8"%>
 
 </head>
 <body>
-	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal">
-		<div class="modal-dialog" role="document">
+	<div class="modal fade bs-example-modal-lg" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal">
+		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<!-- 	模态窗内容加载位置 -->
 			</div>
@@ -32,7 +32,7 @@ pageEncoding="utf-8"%>
 			</div>
 			<form class="navbar-form navbar-right" action="" id="searchForm">
 				<div class="form-group">
-					<input type="text" name="searchName" id="searchName" class="form-control" placeholder="请输入患者姓名">
+					<input type="text" name="userCaseSearch" id="userCaseSearch" class="form-control" placeholder="请输入患者名称">
 				</div>
 				<button type="button" class="btn btn-default" id="searchStart">查询</button>
 			</form>
@@ -50,65 +50,60 @@ pageEncoding="utf-8"%>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">预约列表</a>
-			</div>
-			<div class="navbar-form navbar-right">
-				<%-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal" href="<%=request.getContextPath()%>/appointment!toAdd"  >
-					<span class="glyphicon glyphicon-plus" aira-hidden="true" ></span>新增
-				</button>  --%>
+				<a class="navbar-brand" href="#">病例列表</a>
 			</div>
 			
 		</nav>
 		<table class=" table table-hover table-bordered" style="text-align: center;">
 			<tr class="info" >
 				<td width="5%">序号</td>
-				<td width="10%">患者姓名</td>
-				<td width="15%">患者手机号</td>	
-				<td width="5%">患者年龄</td>
-				<td width="10%">预约科室名称</td>
-				<td width="15%">预约科室地址</td>
-				<td width="5%">预约状态</td>
-				<td width="15%">预约时间</td>
+				<td width="10%">预约编号</td>
+				<td width="15%">患者姓名</td>
+				<td width="10%">就诊医生姓名</td>
+				<td width="15%">所开药品</td>
+				<td width="15%">就诊费用(元)</td>
+				<td width="20%">就诊时间</td>
 				<td width="10%">操作</td>
 			</tr>
-			<s:if test="appointmentList != null &&  appointmentList.size != 0">
-			<s:iterator value="appointmentList" status="st">
+			<s:if test="medicineList != null &&  medicineList.size != 0">
+			<s:iterator value="medicineList" status="st">
 			<tr>
-			<td>
+				<td>
 
 					<s:property value="#st.count + ((currPage-1)*10)" />
 				</td>
-				<td >
-				${userId.name}
+				<td title="${appointmentId.appointmentSerial}">
+				<datefmt:writeString property="${appointmentId.appointmentSerial}"
+                            length="20" formatStr="" ellipsis="true" ></datefmt:writeString>
 				</td>
-				<td>
-		
-				${userId.telPhone}
+				<td title="${medicineType}">
+				<datefmt:writeString property="${medicineType}"
+                            length="10" formatStr="" ellipsis="true" ></datefmt:writeString>
 				</td>
-				<td>
-				${userId.age}
-				</td>
-				<td>
-				${departmentId.departmentName}
-				</td>
-				<td>
 				
-					${departmentId.departmentAddress}
-				</td>
-				<td>
-					<s:if test="appointmentStatus==0">已预约</s:if>
-					<s:if test="appointmentStatus==1">已完成</s:if>
-					<s:if test="appointmentStatus==2">已过期</s:if>
-				</td>		
-				<td>
-				 <datefmt:writeString formatStr="yyyy-MM-dd HH:mm:ss" property="${appointmentTime}">
-                       </datefmt:writeString>	
-				</td>
+				<td >
+				<s:property value="medicineStore" />
 			
+				</td>
+					<td title="${medicineSuppier}">
+				<datefmt:writeString property="${medicineSuppier}"
+                            length="10" formatStr="" ellipsis="true" ></datefmt:writeString>
+				</td>
+				<td title="${userId.name}">
+				<datefmt:writeString property="${userId.name}"
+                            length="10" formatStr="" ellipsis="true" ></datefmt:writeString>
+				</td>
+				
+				<td >
+				<datefmt:writeString formatStr="yyyy-MM-dd HH:mm:ss" property="${inTime}">
+                       </datefmt:writeString>
+			
+				</td>
 				<td>
-					<s:if test="appointmentTime!=null">
-					<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal"  href="<%=request.getContextPath()%>/appointment!toDetail.action?serial=<s:property value="serial" />">查看</button>		
- 					<button type="button" class="btn btn-danger btn-xs" onclick="deleteUser(${serial})">删除</button>
+					<s:if test="medicineName!=null">
+					<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal"  href="<%=request.getContextPath()%>/medicine!toDetail.action?serial=<s:property value="serial" />">查看</button>
+					<%-- <button type="button" class="btn btn-warning btn-xs"  data-toggle="modal" data-target="#modal" href="<%=request.getContextPath()%>/medicine!toEdit.action?serial=<s:property value="serial" />" >修改</button>
+					<button type="button" class="btn btn-danger btn-xs" onclick="deleteUser(${serial})">删除</button> --%>
 				</s:if>
 				
 			</td>
@@ -130,7 +125,7 @@ pageEncoding="utf-8"%>
 		<ul class="pagination  pagination-lg pagination-right">
 			<li id="Previous">
 				<s:if test="currPage!=1">
-				<a href="${pageContext.request.contextPath}/appointment!queryList.action?currPage=<s:property value="currPage-1" />" aria-label="Previous">
+				<a href="${pageContext.request.contextPath}/medicine!queryList.action?currPage=<s:property value="currPage-1" />" aria-label="Previous">
 				<span aria-hidden="true">&laquo;</span>
 			</a>
 		</s:if>
@@ -139,7 +134,7 @@ pageEncoding="utf-8"%>
 
 	<li>
 		<s:if test="currPage!=totalPage&&totalPage!=0">
-		<a href="${pageContext.request.contextPath}/appointment!queryList.action?currPage=<s:property value="currPage+1" />" aria-label="Next">
+		<a href="${pageContext.request.contextPath}/medicine!queryList.action?currPage=<s:property value="currPage+1" />" aria-label="Next">
 		<span aria-hidden="true">&raquo;</span>
 	</a>
 </s:if>
@@ -166,15 +161,15 @@ pageEncoding="utf-8"%>
 		var pageTotal="${totalPage}";
 		var pageNo="";
 		for(var i=1;i<=pageTotal;i++){
-			pageNo+="<li><a href={pageContext.request.contextPath}/appointment!queryList.action?currPage="+i+">"+i+"</a></li>"
+			pageNo+="<li><a href={pageContext.request.contextPath}/medicine!queryList.action?currPage="+i+">"+i+"</a></li>"
 		}
 		$("#Previous").after(pageNo);
 	})
 	$("#searchStart").click(function () {
 		// body...
 		var currPage=$("#currPage").val();
-		var searchNoticeTitle=$("#searchNoticeTitle").val();
-		$("#searchForm").action="{pageContext.request.contextPath}/appointment!queryList.action?currPage="+currPage+"&searchNoticeTitle="+searchNoticeTitle;
+		var searchmedicineName=$("#searchmedicineName").val();
+		$("#searchForm").action="{pageContext.request.contextPath}/medicine!queryList.action?currPage="+currPage+"&searchmedicineName="+searchmedicineName;
 		$("#searchForm").submit();
 	})
 	function queryList(){
@@ -189,7 +184,7 @@ pageEncoding="utf-8"%>
 				{
 					type : 'get',
 					dataType : 'json',
-					url : 'appointment!delete.action',
+					url : 'medicine!delete.action',
 					async : false,
 					data :
 					{

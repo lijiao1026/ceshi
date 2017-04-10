@@ -95,6 +95,15 @@
 	<result name="list">/jsp/medicine/medicine_list.jsp</result>
 	<result name="detail">/jsp/medicine/medicine_detail.jsp</result>
 	</action>
+	<!-- 病例Action -->
+	<action name="userCase" class="com.lj.action.userCase.UserCaseAction">
+	<result name="toAdd">/jsp/userCase/userCase_add.jsp</result>
+	<result name="list">/jsp/userCase/userCase_list.jsp</result>
+	<result name="queryAppointment" type="json"></result>
+	<result name="queryUser" type="json"></result>
+	<result name="queryMedicine" type="json"></result>
+	<result name="addSuccess" type="json"></result>
+	</action>
 	
 </package>
 </struts>

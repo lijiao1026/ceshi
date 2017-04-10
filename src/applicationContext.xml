@@ -41,7 +41,8 @@
 			<value>com/lj/pojo/sysNotice/SysNotice.hbm.xml</value>
 			<value>com/lj/pojo/department/Department.hbm.xml</value>
 			<value>com/lj/pojo/appointment/Appointment.hbm.xml</value>
-			<value>com/lj/pojo/medicine/Medicine.hbm.xml</value>	
+			<value>com/lj/pojo/medicine/Medicine.hbm.xml</value>
+			<value>com/lj/pojo/userCase/UserCase.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -84,7 +85,13 @@
 	 <bean id="medicineAction"  class="com.lj.action.medicine.MedicineAction" scope="prototype">
 	<property name="medicineService" ref="medicineService"></property>
 	</bean> 
-	
+	<!-- 门诊收费所用类 -->
+	 <bean id="userCaseAction"  class="com.lj.action.userCase.UserCaseAction" scope="prototype">
+	<property name="userCaseService" ref="userCaseService"></property>
+	<property name="appointmentService" ref="appointmentService"></property>
+	<property name="userService" ref="userService"></property>
+	<property name="medicineService" ref="medicineService"></property>
+	</bean>
 	
 	
 	
@@ -109,7 +116,10 @@
 	 <bean id="medicineService" class="com.lj.service.medicine.MedicineServiceImpl">
 	<property name="medicineDao" ref="medicineDao"></property>
 	</bean>
-	
+	<!-- 门诊收费service -->
+	 <bean id="userCaseService" class="com.lj.service.userCase.UserCaseServiceImpl">
+	<property name="userCaseDao" ref="userCaseDao"></property>
+	</bean>
 	
 	
 	<!-- 配置DAO的类 -->
@@ -129,10 +139,16 @@
 	 <bean id="appointmentDao" class="com.lj.dao.appointment.AppointmentDaoImpl">
 	<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<!-- 预约Dao -->
+	<!-- 药品Dao -->
 	 <bean id="medicineDao" class="com.lj.dao.medicine.MedicineDaoImpl">
 	<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+	<!-- 门诊收费Dao -->
+	 <bean id="userCaseDao" class="com.lj.dao.userCase.UserCaseDaoImpl">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	
 	
 	<!-- 配置事务管理器 -->
 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">

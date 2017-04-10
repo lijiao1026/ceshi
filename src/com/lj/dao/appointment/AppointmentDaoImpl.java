@@ -79,4 +79,47 @@ public class AppointmentDaoImpl extends HibernateDaoSupport implements Appointme
 		this.getHibernateTemplate().delete(appointment);
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public int findCountByAppointmentSerial(String q,String string) {
+		String hql="select count(*) from Appointment  where appointmentSerial=? and appointmentStatus=?";
+		List<Long> list = this.getHibernateTemplate().find(hql,"%"+q+"%",string);
+		if (list.size() > 0) {
+			return list.get(0).intValue();
+		}
+		return 0;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Appointment> findByPageByAppointmentSerial(int begin, int pageSize, String q,String string) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(Appointment.class).add(Restrictions.like("appointmentStatus", string)).add(Restrictions.like("appointmentSerial", "%"+q+"%")).addOrder(Order.desc("appointmentTime"));
+		List<Appointment> list = this.getHibernateTemplate().findByCriteria(criteria, begin, pageSize);
+		return list;
+	}
+
+	@Override
+	public void updateAppointment(Appointment appointment) {
+		this.getHibernateTemplate().update(appointment);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public int findCountByStatus(String string) {
+		String hql="select count(*) from Appointment  where  appointmentStatus=?";
+		List<Long> list = this.getHibernateTemplate().find(hql,string);
+		if (list.size() > 0) {
+			return list.get(0).intValue();
+		}
+		return 0;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Appointment> findByPageByStatus(int begin, int pageSize, String string) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(Appointment.class).add(Restrictions.like("appointmentStatus", string)).addOrder(Order.desc("appointmentTime"));
+		List<Appointment> list = this.getHibernateTemplate().findByCriteria(criteria, begin, pageSize);
+		return list;
+	}
+
 }

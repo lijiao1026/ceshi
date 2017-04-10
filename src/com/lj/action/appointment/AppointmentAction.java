@@ -138,6 +138,8 @@ public class AppointmentAction extends ActionSupport{
 			try {
 				String appointmentTrueTime=GeneralUtils.date2String(GeneralUtils.string2Date(appointment.getAppointmentTime(),GeneralConstant.DATETIME_14_COMMON), GeneralConstant.DATETIME_14);
 				appointment.setAppointmentTime(appointmentTrueTime);
+				appointment.setAppointmentStatus("0");
+				appointment.setAppointmentSerial(appointment.getUserId().getUid()+appointmentTrueTime);
 				appointmentService.saveAppointment(appointment);
 				message="1";
 			} catch (Exception e) {

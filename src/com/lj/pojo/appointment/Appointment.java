@@ -12,8 +12,10 @@ import com.lj.pojo.user.User;
 public class Appointment {
 	private Integer serial;//序号
 	private User userId;//患者
+	private String appointmentSerial;//预约编号
 	private Department departmentId;//科室
 	private String appointmentTime;//预约时间
+	private String appointmentStatus;//预约状态 0为已预约，1为已完成，2为已过期
 	private String remark;//备注
 	public Integer getSerial() {
 		return serial;
@@ -45,6 +47,18 @@ public class Appointment {
 	}
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+	public String getAppointmentStatus() {
+		return appointmentStatus;
+	}
+	public void setAppointmentStatus(String appointmentStatus) {
+		this.appointmentStatus = appointmentStatus;
+	}
+	public String getAppointmentSerial() {
+		return appointmentSerial;
+	}
+	public void setAppointmentSerial(String appointmentSerial) {
+		this.appointmentSerial = appointmentSerial;
 	}
 	
 }

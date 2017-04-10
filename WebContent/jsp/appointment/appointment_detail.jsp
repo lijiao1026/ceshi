@@ -22,6 +22,12 @@ pageEncoding="utf-8"%>
 		<div class="modal-body">
 		<div class="col-md-12"  id="firstIn">
 		<table class="table table-bordered table-striped">
+				<tr>
+				<th width="30%">预约编号</th>
+				<td width="70%">	
+				<s:property value="appointment.appointmentSerial" />
+					 </td>			
+			</tr>
 			<tr>
 				<th width="30%">患者姓名</th>
 				<td width="70%"><s:property value="appointment.userId.name" />  </td>			
@@ -57,6 +63,14 @@ pageEncoding="utf-8"%>
 				<td width="70%"><datefmt:writeString formatStr="yyyy-MM-dd HH:mm:ss" property="${appointment.appointmentTime}">
                        </datefmt:writeString>  </td>			
 			</tr>
+			<tr>
+				<th width="30%">预约状态</th>
+				<td width="70%">	
+					<s:if test="appointment.appointmentStatus==0">已预约</s:if>
+					<s:if test="appointment.appointmentStatus==1">已完成</s:if>
+					<s:if test="appointment.appointmentStatus==2">已过期</s:if> </td>			
+			</tr>
+			
 			<tr>
 				<th width="30%">备注</th>
 				<td width="70%"><s:property value="appointment.remark" />  </td>			

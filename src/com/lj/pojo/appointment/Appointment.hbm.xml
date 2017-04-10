@@ -10,6 +10,8 @@
 	      </id>
         <property name="appointmentTime"  column="appointmentTime" length="14"></property>
 		<property name="remark"  column="remark" length="200"></property>
+		<property name="appointmentSerial"  column="appointmentSerial" length="50"></property>
+		<property name="appointmentStatus"  column="appointmentStatus" length="1"></property>
 		<many-to-one name="departmentId" class="com.lj.pojo.department.Department" column="departmentId" />
 		<many-to-one name="userId" class="com.lj.pojo.user.User" column="userId" />
 		

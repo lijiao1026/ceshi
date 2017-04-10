@@ -72,4 +72,9 @@ public class MedicineDaoImpl extends HibernateDaoSupport implements MedicineDao 
 		}
 	}
 
+	@Override
+	public void updateMedicine(Medicine medicine) {
+		this.getHibernateTemplate().update(medicine);
+	}
+
 }

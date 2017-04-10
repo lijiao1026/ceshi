@@ -33,5 +33,10 @@ public interface MedicineService {
 	 * @return
 	 */
 	Medicine findById(Integer serial);
+	/**
+	 * 更新药品信息
+	 * @param medicine
+	 */
+	void updateMedicine(Medicine medicine);
 
 }
