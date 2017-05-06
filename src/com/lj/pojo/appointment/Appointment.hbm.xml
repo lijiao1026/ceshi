@@ -8,7 +8,7 @@
 	     <id name="serial"  column="serial">
 	        <generator class="native" />
 	      </id>
-        <property name="appointmentTime"  column="appointmentTime" length="14"></property>
+        <property name="appointmentTime"  column="appointmentTime" length="8"></property>
 		<property name="remark"  column="remark" length="200"></property>
 		<property name="appointmentSerial"  column="appointmentSerial" length="50"></property>
 		<property name="appointmentStatus"  column="appointmentStatus" length="1"></property>

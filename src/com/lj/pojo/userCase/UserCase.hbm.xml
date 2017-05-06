@@ -17,6 +17,9 @@
 		<many-to-one name="appointmentId" class="com.lj.pojo.appointment.Appointment" column="appointmentId" />
 		<many-to-one name="userId" class="com.lj.pojo.user.User" column="userId" />
 		<many-to-one name="MedicineId" class="com.lj.pojo.medicine.Medicine" column="MedicineId" />
+		<many-to-one name="MedicineId2" class="com.lj.pojo.medicine.Medicine" column="MedicineId2" />
+		<many-to-one name="MedicineId3" class="com.lj.pojo.medicine.Medicine" column="MedicineId3" />
+		<many-to-one name="MedicineId1" class="com.lj.pojo.medicine.Medicine" column="MedicineId1" />
 		
 		
 </class>

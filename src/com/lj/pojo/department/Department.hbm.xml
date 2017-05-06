@@ -10,6 +10,6 @@
 	      </id>
         <property name="departmentName"  column="departmentName" length="50"></property>
 		<property name="departmentAddress"  column="departmentAddress" length="50"></property>
-		
+		<property name="departmentType"  column="departmentType" length="2"></property>		
 </class>
 </hibernate-mapping>

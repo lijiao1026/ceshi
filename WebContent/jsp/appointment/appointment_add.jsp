@@ -107,8 +107,9 @@ pageEncoding="utf-8"%>
 	<script type="text/javascript">
 		$("#enterappointmenttime").datetimepicker({
     	 language: 'zh-CN',//显示中文
-    	format: "yyyy-mm-dd hh:ii:ss",//显示格式
-    	initialDate: new Date(),
+    	 minView: "month", //选择日期后，不会再跳转去选择时分秒 
+    	 format: "yyyy-mm-dd",//显示格式
+    	 initialDate: new Date(),
     	  autoclose: true,//选中自动关闭
     	  todayBtn: true//显示今日按钮
     	}); 
@@ -147,10 +148,28 @@ pageEncoding="utf-8"%>
 				window.wxc.xcConfirm("请输入时间", window.wxc.xcConfirm.typeEnum.info);
 				return false;
 			}
+			appointmenttime=enterappointmenttime.replace(/[\-]/g,"");
+			if(checkTime(appointmenttime))
+			{
+				window.wxc.xcConfirm("预约日期不能选择过去日期!", window.wxc.xcConfirm.typeEnum.info);
+				return false;
+			}
 			
 			return true; 
 		}
 
+		function checkTime(data)
+		{
+			var myDate = new Date();
+			var mytimeYear=myDate.getFullYear();
+			var mytimeMonth=myDate.getMonth();
+			var mytimeDay=myDate.getDate();
+			if((parseInt(mytimeYear)*10000+(parseInt(mytimeMonth)+1)*100+parseInt(mytimeDay))<=parseInt(data)){
+				return false;
+			}else{
+				return true;
+			}
+		}
 		$(".btn-success").click(function () {
 			if (checkParm()) {	
 				
@@ -272,7 +291,7 @@ pageEncoding="utf-8"%>
 			cache: true
 		},
 			  escapeMarkup: function (markup) { return markup; }, //自定义格式化工作
-			  minimumInputLength: 1,
+			  minimumInputLength: 0,
 			  templateResult:  formatRepo2, 
 			  templateSelection:formatRepoSelection2,
 			});

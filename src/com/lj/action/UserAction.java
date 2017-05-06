@@ -1,5 +1,8 @@
 package com.lj.action;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +21,7 @@ import com.lj.pojo.user.User;
 import com.lj.service.appointment.AppointmentService;
 import com.lj.service.sysNotice.SysNoticeService;
 import com.lj.service.user.UserService;
+import com.lj.util.GeneralUtils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -84,6 +88,12 @@ public class UserAction extends ActionSupport{
 		if(user!=null){
 			try {
 				user.setUserType("1");
+				String birthDay=GeneralUtils.date2String(GeneralUtils.string2Date(user.getBirthDay(),GeneralConstant.DATETIME_10),
+						GeneralConstant.DATETIME_8);
+				user.setBirthDay(birthDay);
+				String nowDay=getSysTime();
+				Integer age=Integer.parseInt(nowDay.substring(0, 4))-Integer.parseInt(birthDay.substring(0, 4));
+				user.setAge(age.toString());
 				userService.saveUser(user);
 			} catch (Exception e) {
 				 e.printStackTrace();
@@ -93,6 +103,18 @@ public class UserAction extends ActionSupport{
 		return "toLogin";
 		
 	}
+	/**
+	 * 获取系统时间
+	 * @return
+	 */
+    private String getSysTime()
+    {
+        Date date = new Date();
+        DateFormat format = new SimpleDateFormat("yyyyMMdd");
+        String SysTime = format.format(date);
+        return SysTime;
+    }
+    
 	/**
 	 * 验证用户名是否重复
 	 * @return
@@ -150,6 +172,7 @@ public class UserAction extends ActionSupport{
 	 *系统首页跳转
 	 * @return
 	 */
+	
 	public String toIndex(){
 		try {
 			//公告栏
@@ -168,7 +191,42 @@ public class UserAction extends ActionSupport{
 	  				sysNoticeList=sysNoticeListFirst;
 	  			}
 			//预约栏
-	  			PageBean<Appointment> pageBean2 = appointmentService.findByPageAndStatus(currPage,"0");
+	  			
+	  			String sql="SELECT m.departmentName,count(t.serial) sumAppointment FROM appointment t,department m where t.departmentId=m.serial and t.appointmentTime='"
+	  			+getSysTime()+"' group by t.departmentId order by sumAppointment;";
+	  			List<Object[]> tmpObjList = appointmentService.findBySql(sql);
+	  			List<Appointment> appointmentListFirst=new ArrayList<Appointment>();
+	  			
+	  			/*List<Appointment> appointmentListFirst=new ArrayList<Appointment>();	
+	  			appointmentListFirst=null;*/
+	  			if(tmpObjList!=null){
+	  				if(tmpObjList.size()<3&&tmpObjList.size()!=0){
+		  				int i;
+		  				for(i=0;i<tmpObjList.size();i++){
+		  					Appointment appointment=new Appointment();
+		  					appointment.setAppointmentSerial(tmpObjList.get(i)[0].toString());
+		  					appointment.setAppointmentTime(tmpObjList.get(i)[1].toString());
+		  					appointmentListFirst.add(appointment);
+		  				}
+		  				while(i<=2){
+		  					Appointment appointment=new Appointment();
+		  	  				appointment=null;
+		  	  				i++;
+		  	  			appointmentListFirst.add(appointment);
+		  				}
+		  			}else{
+		  				int i;
+		  				for(i=0;i<3;i++){
+		  					Appointment appointment=new Appointment();
+		  					appointment.setAppointmentSerial(tmpObjList.get(i)[0].toString());
+		  					appointment.setAppointmentTime(tmpObjList.get(i)[1].toString());
+		  					appointmentListFirst.add(appointment);
+		  				}
+		  			}
+		  			appointmentList=appointmentListFirst;	
+	  			}
+	  		
+	  		/*	PageBean<Appointment> pageBean2 = appointmentService.findByPageAndStatus(currPage,"0");
 	  			List<Appointment> appointmentListFirst=new ArrayList<Appointment>();
 	  			appointmentListFirst=null;
 	  			appointmentListFirst= pageBean2.getList();
@@ -181,12 +239,13 @@ public class UserAction extends ActionSupport{
   				appointmentList=appointmentListFirst.subList(0, 3);
   			}else{
   				appointmentList=appointmentListFirst;
-  			}
+  			}*/
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "index";
 	}
+	
 	/**
 	 * 改变密码
 	 * @return

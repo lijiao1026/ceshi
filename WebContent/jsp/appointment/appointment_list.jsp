@@ -101,7 +101,7 @@ pageEncoding="utf-8"%>
 					<s:if test="appointmentStatus==2">已过期</s:if>
 				</td>		
 				<td>
-				 <datefmt:writeString formatStr="yyyy-MM-dd HH:mm:ss" property="${appointmentTime}">
+				 <datefmt:writeString formatStr="yyyy-MM-dd " property="${appointmentTime}">
                        </datefmt:writeString>	
 				</td>
 			

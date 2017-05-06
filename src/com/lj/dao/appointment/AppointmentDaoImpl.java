@@ -2,6 +2,8 @@ package com.lj.dao.appointment;
 
 import java.util.List;
 
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -120,6 +122,19 @@ public class AppointmentDaoImpl extends HibernateDaoSupport implements Appointme
 		DetachedCriteria criteria = DetachedCriteria.forClass(Appointment.class).add(Restrictions.like("appointmentStatus", string)).addOrder(Order.desc("appointmentTime"));
 		List<Appointment> list = this.getHibernateTemplate().findByCriteria(criteria, begin, pageSize);
 		return list;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Object[]> findBySql(String sql) {
+	 	Session session = this.getSession(true);
+        SQLQuery query = session.createSQLQuery(sql);
+        List<Object[]> list = query.list();
+        
+        releaseSession(session);
+        query = null;
+        
+        return list;
 	}
 
 }

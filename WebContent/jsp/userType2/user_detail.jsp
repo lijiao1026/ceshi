@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 pageEncoding="utf-8"%>
 <%@ taglib uri="/struts-tags"  prefix="s"%> 
+<%@ taglib uri="/WEB-INF/dataformate.tld" prefix="datefmt"%>
 <!DOCTYPE html>
 <head>
 
@@ -41,6 +42,11 @@ pageEncoding="utf-8"%>
 				<s:if test="user.sex==0">男</s:if>
 				<s:if test="user.sex==1">女</s:if>
 				 </td>			
+			</tr>
+				<tr>
+				<th>出生日期</th>
+				<td><datefmt:writeString formatStr="yyyy-MM-dd" property="${user.birthDay}">
+                       </datefmt:writeString>  </td>			
 			</tr>
 			<tr>
 				<th>手机号码</th>

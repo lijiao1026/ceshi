@@ -1,5 +1,7 @@
 package com.lj.service.appointment;
 
+import java.util.List;
+
 import com.lj.pojo.appointment.Appointment;
 import com.lj.pojo.pageBean.PageBean;
 
@@ -53,5 +55,11 @@ public interface AppointmentService {
 	 * @return
 	 */
 	PageBean<Appointment> findByPageAndStatus(Integer currPage, String string);
+	/**
+	 * 按照sql语句查询
+	 * @param sql
+	 * @return
+	 */
+	List<Object[]> findBySql(String sql);
 
 }

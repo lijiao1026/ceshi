@@ -42,34 +42,51 @@ pageEncoding="utf-8"%>
 				<div class="form-group " >
 					<label for="enterappointmentSerial">预约编号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 					<select   id="enterappointmentSerial"  name="userCase.appointmentId.serial" class="js-data-example-ajax form-control " tabindex="-1" aria-hidden="true">
-						<option   value="3620194" selected="selected">请选择预约编号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+						<option   value="" selected="selected">请选择预约编号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
 					</select>
-<!-- 					<input type="text"  size="30" class="form-control" maxlength="20" name="userCase.appointmentId.serial" id="enterappointmentSerial" placeholder="请选择预约编号">
- -->				</div>
+				</div>
 			</div>
 			<div class="col-md-6 col-lg-6 tabLength"  >
 				<div class="form-group" >
-					<label for="enteruserId" >就诊医生&nbsp;&nbsp;&nbsp;</label>
-					<select id="enteruserId"  name="userCase.userId.uid" class="js-data-example-ajax form-control " tabindex="-1" aria-hidden="true">
-						<option  value="3620194" selected="selected">请选择就诊医生姓名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+					<label for="entermedicinename" >所开药品&nbsp;&nbsp;&nbsp;</label>
+					<select id="entermedicinename"  name="userCase.medicineId.serial" class="js-data-example-ajax form-control" tabindex="-1" aria-hidden="true">
+						<option  value="" selected="selected">请选择药品名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
 					</select>
-<!-- 					<input type="text" size="30" class="form-control" maxlength="20" name="userCase.userId.uid" id="enteruserId" placeholder="请选择就诊医生姓名">
- -->				</div>
+				</div>
 			</div>
 			<div class="col-lg-6 col-md-6 col-lg-push-2 col-md-push-2 tabLength" >
 				<div class="form-group">
-					<label for="entermedicinename" >所开药品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-					<select   id="entermedicinename"  name="userCase.medicineId.serial" class="js-data-example-ajax form-control " tabindex="-1" aria-hidden="true">
-						<option value="30194" selected="selected">请选择药品名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label for="entermedicinename1" >所开药品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+					<select   id="entermedicinename1"  name="userCase.medicineId1.serial" class="js-data-example-ajax form-control " tabindex="-1" aria-hidden="true">
+						<option value="" selected="selected">请选择药品名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
 					</select>
-<!-- 					<input size="30" type="text" class="form-control" name="userCase.medicineId.serial" id="entermedicinename"  placeholder="请选择药品名称" class="form-group">
- -->				</div>
+				</div>
+			</div>
+			<div class="col-lg-6 col-md-6 tabLength" >
+			<div class="form-group">
+					<label for="entermedicinename2" >所开药品&nbsp;&nbsp;&nbsp;</label>
+					<select   id="entermedicinename2"  name="userCase.medicineId2.serial" class="js-data-example-ajax form-control " tabindex="-1" aria-hidden="true">
+						<option value="" selected="selected">请选择药品名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+					</select>
+				</div>
+			</div>
+			
+			<div class="col-lg-6 col-md-6 col-lg-push-2 col-md-push-2 tabLength" >
+				<div class="form-group">
+					<label for="entermedicinename3" >所开药品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+					<select   id="entermedicinename3"  name="userCase.medicineId3.serial" class="js-data-example-ajax form-control " tabindex="-1" aria-hidden="true">
+						<option value="" selected="selected">请选择药品名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+					</select>
+				</div>
 			</div>
 			<div class="col-lg-6 col-md-6 tabLength" >
 				<div class="form-group">
 					<label for="entercaseFree" >就诊费用&nbsp;&nbsp;&nbsp;</label>
-					<input size="30" type="text" class="form-control" name="userCase.caseFree" id="entercaseFree"   placeholder="请输入就诊费用" class="form-group" >
+					<input size="44" type="text" class="form-control" name="userCase.caseFree" id="entercaseFree"   placeholder="请输入就诊费用" class="form-group" >
 				</div>
 			</div>
 			
@@ -93,7 +110,7 @@ pageEncoding="utf-8"%>
 			</div>
 				<div class="col-md-10 col-lg-10 col-lg-push-2 col-md-push-2 tabLength"   >
 				<div class="form-group" >
-					<label for="enterfamailyBingShi" class="center-block">个人史&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+					<label for="enterfamailyBingShi" class="center-block">家族史&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 					<textarea  maxlength="200" name="userCase.famailyBingShi" style="margin-left: 13%;margin-top: -10px;" id="enterfamailyBingShi" placeholder="家族史" rows="3"  cols="105"></textarea>
 				</div>
 			</div>
@@ -182,60 +199,7 @@ pageEncoding="utf-8"%>
 	}
 	
 	
-	$("#enteruserId").select2({
-
-		language: "zh-CN",
-		maximumInputLength: 10,
-		ajax: {
-			url: "<%=request.getContextPath()%>/userCase!queryUser.action",
-			dataType: 'json',
-			delay: 500,
-			data: function (params) {
-				return {
-		        q2: params.term, // search term
-		        currPage: params.page
-		    };
-		},
-		processResults: function (data, params) {
-		    //解析结果为预期的格式，因为我们使用自定义格式化功能，我们不需要更改远程JSON数据，表示滚动可以使用
-		    params.page = params.page || 1;
-		    /*使用select2必须传输的数据中有id值，不然无法使得组件识别，在这里也别注释，以防止以后忘记。*/
-		    var results = [];
-
-		    $.each(data.userList,function(i,v){
-		    	var o ={};
-		    	o.id=v.uid;
-		    	o.uid=v.uid;
-		    	o.userName=v.userName;
-		    	o.name=v.name;					  
-		    	results.push(o);
-		    });
-		    return {
-		    	results: results,
-		    	pagination: {
-		    		more: (params.page * 30) < data.total_count
-		    	}
-		    };
-		},
-		cache: true
-	},
-		  escapeMarkup: function (markup) { return markup; }, //自定义格式化工作
-		  minimumInputLength: 1,
-		  templateResult:  formatRepo2, 
-		  templateSelection:formatRepoSelection2,
-		});
-
-	function formatRepo2 (repo) {
-		if (repo.loading) return repo.text;
-		var markup="<option value="+repo.uid+">用户名:"+repo.userName+"&nbsp;&nbsp;&nbsp;姓名:"+
-		repo.name+"</option>";
-		return markup;
-	}
-
-	function formatRepoSelection2(repo) {
-		$("#enteruserId").val(repo.uid); 
-		return repo.name||repo.text;
-	}
+	
 	
 	
 	$("#entermedicinename").select2({
@@ -278,7 +242,7 @@ pageEncoding="utf-8"%>
 		cache: true
 	},
 		  escapeMarkup: function (markup) { return markup; }, //自定义格式化工作
-		  minimumInputLength: 1,
+		  minimumInputLength: 0,
 		  templateResult:  formatRepo3, 
 		  templateSelection:formatRepoSelection3,
 		});
@@ -325,11 +289,7 @@ pageEncoding="utf-8"%>
 			window.wxc.xcConfirm("请选择预约编号", window.wxc.xcConfirm.typeEnum.info);
 			return false;
 		}
-		var enteruserId = $('#enteruserId').val();
-		if (enteruserId==null||enteruserId=="") {
-			window.wxc.xcConfirm("请选择就诊时间", window.wxc.xcConfirm.typeEnum.info);
-			return false;
-		}
+	
 		var entermedicinename = $('#entermedicinename').val();
 		if (entermedicinename==null||entermedicinename=="") {
 			window.wxc.xcConfirm("请选择药品名称", window.wxc.xcConfirm.typeEnum.info);
@@ -364,6 +324,180 @@ pageEncoding="utf-8"%>
   return false;
 }
 		
+		$("#entermedicinename1").select2({
+
+			language: "zh-CN",
+			maximumInputLength: 10,
+			ajax: {
+				url: "<%=request.getContextPath()%>/userCase!queryMedicine.action",
+				dataType: 'json',
+				delay: 500,
+				data: function (params) {
+					return {
+			        medicineName: params.term, // search term
+			        currPage: params.page
+			    };
+			},
+			processResults: function (data, params) {
+			    //解析结果为预期的格式，因为我们使用自定义格式化功能，我们不需要更改远程JSON数据，表示滚动可以使用
+			    params.page = params.page || 1;
+			    /*使用select2必须传输的数据中有id值，不然无法使得组件识别，在这里也别注释，以防止以后忘记。*/
+			    var results = [];
+
+			    $.each(data.medicineList,function(i,v){
+			    	var o ={};
+			    	o.id=v.serial;
+			    	o.serial=v.serial;
+			    	o.medicineName=v.medicineName;
+			    	o.medicineStore=v.medicineStore;
+			    	o.unitPrice=v.unitPrice;
+			    	o.information="药品名称:"+v.medicineName+"   药品单价："+v.unitPrice;
+			    	results.push(o);
+			    });
+			    return {
+			    	results: results,
+			    	pagination: {
+			    		more: (params.page * 30) < data.total_count
+			    	}
+			    };
+			},
+			cache: true
+		},
+			  escapeMarkup: function (markup) { return markup; }, //自定义格式化工作
+			  minimumInputLength: 0,
+			  templateResult:  formatRepo5, 
+			  templateSelection:formatRepoSelection5,
+			});
+
+		function formatRepo5 (repo) {
+			if (repo.loading) return repo.text;
+			var markup="<option value="+repo.serial+">药品名称:"+repo.medicineName+"&nbsp;&nbsp;&nbsp;药品库存量:"+
+			repo.medicineStore+"&nbsp;&nbsp;&nbsp;</br>药品单价:"+
+			repo.unitPrice+"</option>";
+			return markup;
+		}
+
+		function formatRepoSelection5(repo) {
+			$("#entermedicinename1").val(repo.serial); 
+			return repo.information||repo.text;
+		}
+		
+		
+		$("#entermedicinename2").select2({
+
+			language: "zh-CN",
+			maximumInputLength: 10,
+			ajax: {
+				url: "<%=request.getContextPath()%>/userCase!queryMedicine.action",
+				dataType: 'json',
+				delay: 500,
+				data: function (params) {
+					return {
+			        medicineName: params.term, // search term
+			        currPage: params.page
+			    };
+			},
+			processResults: function (data, params) {
+			    //解析结果为预期的格式，因为我们使用自定义格式化功能，我们不需要更改远程JSON数据，表示滚动可以使用
+			    params.page = params.page || 1;
+			    /*使用select2必须传输的数据中有id值，不然无法使得组件识别，在这里也别注释，以防止以后忘记。*/
+			    var results = [];
+
+			    $.each(data.medicineList,function(i,v){
+			    	var o ={};
+			    	o.id=v.serial;
+			    	o.serial=v.serial;
+			    	o.medicineName=v.medicineName;
+			    	o.medicineStore=v.medicineStore;
+			    	o.unitPrice=v.unitPrice;
+			    	o.information="药品名称:"+v.medicineName+"   药品单价："+v.unitPrice;
+			    	results.push(o);
+			    });
+			    return {
+			    	results: results,
+			    	pagination: {
+			    		more: (params.page * 30) < data.total_count
+			    	}
+			    };
+			},
+			cache: true
+		},
+			  escapeMarkup: function (markup) { return markup; }, //自定义格式化工作
+			  minimumInputLength: 0,
+			  templateResult:  formatRepo22, 
+			  templateSelection:formatRepoSelection22,
+			});
+
+		function formatRepo22 (repo) {
+			if (repo.loading) return repo.text;
+			var markup="<option value="+repo.serial+">药品名称:"+repo.medicineName+"&nbsp;&nbsp;&nbsp;药品库存量:"+
+			repo.medicineStore+"&nbsp;&nbsp;&nbsp;</br>药品单价:"+
+			repo.unitPrice+"</option>";
+			return markup;
+		}
+
+		function formatRepoSelection22(repo) {
+			$("#entermedicinename2").val(repo.serial); 
+			return repo.information||repo.text;
+		}
+		
+		$("#entermedicinename3").select2({
+
+			language: "zh-CN",
+			maximumInputLength: 10,
+			ajax: {
+				url: "<%=request.getContextPath()%>/userCase!queryMedicine.action",
+				dataType: 'json',
+				delay: 500,
+				data: function (params) {
+					return {
+			        medicineName: params.term, // search term
+			        currPage: params.page
+			    };
+			},
+			processResults: function (data, params) {
+			    //解析结果为预期的格式，因为我们使用自定义格式化功能，我们不需要更改远程JSON数据，表示滚动可以使用
+			    params.page = params.page || 1;
+			    /*使用select2必须传输的数据中有id值，不然无法使得组件识别，在这里也别注释，以防止以后忘记。*/
+			    var results = [];
+
+			    $.each(data.medicineList,function(i,v){
+			    	var o ={};
+			    	o.id=v.serial;
+			    	o.serial=v.serial;
+			    	o.medicineName=v.medicineName;
+			    	o.medicineStore=v.medicineStore;
+			    	o.unitPrice=v.unitPrice;
+			    	o.information="药品名称:"+v.medicineName+"   药品单价："+v.unitPrice;
+			    	results.push(o);
+			    });
+			    return {
+			    	results: results,
+			    	pagination: {
+			    		more: (params.page * 30) < data.total_count
+			    	}
+			    };
+			},
+			cache: true
+		},
+			  escapeMarkup: function (markup) { return markup; }, //自定义格式化工作
+			  minimumInputLength: 0,
+			  templateResult:  formatRepo33, 
+			  templateSelection:formatRepoSelection33,
+			});
+
+		function formatRepo33 (repo) {
+			if (repo.loading) return repo.text;
+			var markup="<option value="+repo.serial+">药品名称:"+repo.medicineName+"&nbsp;&nbsp;&nbsp;药品库存量:"+
+			repo.medicineStore+"&nbsp;&nbsp;&nbsp;</br>药品单价:"+
+			repo.unitPrice+"</option>";
+			return markup;
+		}
+
+		function formatRepoSelection33(repo) {
+			$("#entermedicinename3").val(repo.serial); 
+			return repo.information||repo.text;
+		}
 </script>
 </body>
 </html>

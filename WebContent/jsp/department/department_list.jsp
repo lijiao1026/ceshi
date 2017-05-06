@@ -62,17 +62,31 @@ pageEncoding="utf-8"%>
 		<table class=" table table-hover table-bordered" style="text-align: center;">
 			<tr class="info" >
 				<td width="5%">序号</td>
-				<td width="30%">科室名称</td>
-				<td width="40%">科室地址</td>	
+				<td width="20%">科室种类</td>
+				<td width="30%">科室名称</td>			
+				<td width="20%">科室地址</td>	
 				<td width="10%">操作</td>
 			</tr>
 			<s:if test="departmentList != null &&  departmentList.size != 0">
 			<s:iterator value="departmentList" status="st">
 			<tr>
+			
 				<td>
-
 					<s:property value="#st.count + ((currPage-1)*10)" />
 				</td>
+				<td>
+				<s:if test="departmentType==0">内科</s:if>
+				<s:if test="departmentType==1">外科</s:if>
+				<s:if test="departmentType==2">妇产科</s:if>
+				<s:if test="departmentType==3">生殖中心</s:if>
+				<s:if test="departmentType==4">儿科</s:if>
+				<s:if test="departmentType==5">骨外科</s:if>
+				<s:if test="departmentType==6">眼科</s:if>
+				<s:if test="departmentType==7">口腔科</s:if>
+				<s:if test="departmentType==8">耳鼻咽喉头颈科</s:if>
+				<s:if test="departmentType==9">肿瘤科</s:if>
+				</td>
+					
 				<td title="${departmentName}">
 				<datefmt:writeString property="${departmentName}"
                             length="10" formatStr="" ellipsis="true" ></datefmt:writeString>

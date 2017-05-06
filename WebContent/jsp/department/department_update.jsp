@@ -20,7 +20,25 @@ pageEncoding="utf-8"%>
 		<s:hidden name="department.serial" id="serial"></s:hidden>
 		<div class="modal-body">
 			<!-- 	<div class="col-md-6" id="firstIn"> -->
-			<div class="col-md-12"  id="firstIn">
+			<div class="col-md-12" id="firstIn">
+				<div class="form-group" >
+					<label for="enterdepartmentType">科室类别</label>
+					<select id="enterdepartmentType" name="department.departmentType" class="selectpicker show-tick form-control" data-live-searck="false">
+						<option value="">请选择</option>
+						<option value="0">内科</option>
+						<option value="1">外科</option>
+						<option value="2">妇产科</option>
+						<option value="3">生殖中心</option>
+						<option value="4">儿科</option>
+						<option value="5">骨外科</option>
+						<option value="6">眼科</option>
+						<option value="7">口腔科</option>
+						<option value="8">耳鼻咽喉头颈科</option>
+						<option value="9">肿瘤科</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-12" >
 				<div class="form-group" >
 					<label for="enterdepartmentname">科室名称</label>
 					<input type="text" class="form-control" maxlength="50" name="department.departmentName" value="${department.departmentName}" id="enterdepartmentname" placeholder="请输入科室名称">

@@ -1,12 +1,17 @@
 package com.lj.action.userType2;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
+import com.lj.constant.GeneralConstant;
 import com.lj.pojo.department.Department;
 import com.lj.pojo.pageBean.PageBean;
 import com.lj.pojo.user.User;
 import com.lj.service.department.DepartmentService;
 import com.lj.service.user.UserService;
+import com.lj.util.GeneralUtils;
 import com.opensymphony.xwork2.ActionSupport;
 /**
  * 医生用户Action类
@@ -126,6 +131,12 @@ public class UserType2Action extends ActionSupport{
 	public String addSave(){
 		if(user!=null){
 			try {
+				String birthDay=GeneralUtils.date2String(GeneralUtils.string2Date(user.getBirthDay(),GeneralConstant.DATETIME_10),
+						GeneralConstant.DATETIME_8);
+				user.setBirthDay(birthDay);
+				String nowDay=getSysTime();
+				Integer age=Integer.parseInt(nowDay.substring(0, 4))-Integer.parseInt(birthDay.substring(0, 4));
+				user.setAge(age.toString());
 				userService.saveUser(user);
 				message="1";
 			} catch (Exception e) {
@@ -135,7 +146,17 @@ public class UserType2Action extends ActionSupport{
 		}
 		return "addSuccess";
 	}
-	
+	/**
+	 * 获取系统时间
+	 * @return
+	 */
+    private String getSysTime()
+    {
+        Date date = new Date();
+        DateFormat format = new SimpleDateFormat("yyyyMMdd");
+        String SysTime = format.format(date);
+        return SysTime;
+    }
 	/**
 	 * 查看
 	 * @return
@@ -183,6 +204,12 @@ public class UserType2Action extends ActionSupport{
   	public String editSave(){
   		if(user!=null){
 			try {
+				String birthDay=GeneralUtils.date2String(GeneralUtils.string2Date(user.getBirthDay(),GeneralConstant.DATETIME_10),
+						GeneralConstant.DATETIME_8);
+				user.setBirthDay(birthDay);
+				String nowDay=getSysTime();
+				Integer age=Integer.parseInt(nowDay.substring(0, 4))-Integer.parseInt(birthDay.substring(0, 4));
+				user.setAge(age.toString());
 				userService.saveUpdateUser(user);
 				message="1";
 			} catch (Exception e) {

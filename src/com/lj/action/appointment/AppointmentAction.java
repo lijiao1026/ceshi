@@ -120,8 +120,8 @@ public class AppointmentAction extends ActionSupport{
 	public String queryDepartment(){
 		try {
 			if(q2!=null){
-				PageBean<Department> pageBean =departmentService.findBydepartment(currPage,q2);	
-				departmentList= pageBean.getList();
+				/*PageBean<Department> pageBean =departmentService.findBydepartment(currPage,q2);	*/
+				departmentList= departmentService.findAllByName(q2);
 			
 			}
 		} catch (Exception e) {
@@ -136,7 +136,7 @@ public class AppointmentAction extends ActionSupport{
 	public String addSave(){
 		if(appointment!=null){
 			try {
-				String appointmentTrueTime=GeneralUtils.date2String(GeneralUtils.string2Date(appointment.getAppointmentTime(),GeneralConstant.DATETIME_14_COMMON), GeneralConstant.DATETIME_14);
+				String appointmentTrueTime=GeneralUtils.date2String(GeneralUtils.string2Date(appointment.getAppointmentTime(),GeneralConstant.DATETIME_10), GeneralConstant.DATETIME_8);
 				appointment.setAppointmentTime(appointmentTrueTime);
 				appointment.setAppointmentStatus("0");
 				appointment.setAppointmentSerial(appointment.getUserId().getUid()+appointmentTrueTime);

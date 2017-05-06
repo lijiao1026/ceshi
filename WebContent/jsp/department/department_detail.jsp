@@ -23,6 +23,20 @@ pageEncoding="utf-8"%>
 		<div class="col-md-12"  id="firstIn">
 		<table class="table table-bordered table-striped">
 			<tr>
+				<th>科室类别</th>
+				<td>
+				<s:if test="department.departmentType==0">内科</s:if>
+				<s:if test="department.departmentType==1">外科</s:if>
+				<s:if test="department.departmentType==2">妇产科</s:if>
+				<s:if test="department.departmentType==3">生殖中心</s:if>
+				<s:if test="department.departmentType==4">儿科</s:if>
+				<s:if test="department.departmentType==5">骨外科</s:if>
+				<s:if test="department.departmentType==6">眼科</s:if>
+				<s:if test="department.departmentType==7">口腔科</s:if>
+				<s:if test="department.departmentType==8">耳鼻咽喉头颈科</s:if>
+				<s:if test="department.departmentType==9">肿瘤科</s:if></td>			
+			</tr>
+			<tr>
 				<th>科室名称</th>
 				<td><s:property value="department.departmentName" />  </td>			
 			</tr>

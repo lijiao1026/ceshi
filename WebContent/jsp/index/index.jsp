@@ -98,16 +98,24 @@ pageEncoding="utf-8"%>
 		<div class="list-group">
 		<s:if test="appointmentList != null &&  appointmentList.size != 0">
 			<s:iterator value="appointmentList" status="st">
-			<button type="button" class="list-group-item" data-toggle="modal" data-target="#modal"  href="<%=request.getContextPath()%>/appointment!toDetail.action?serial=<s:property value="serial" />">
-			${userId.name}用户预约了${departmentId.departmentName} 
-			 <p class="pull-right">
-                            <datefmt:writeString formatStr="yyyy-MM-dd HH:mm:ss" property="${appointmentTime}">
-                       </datefmt:writeString></p>
+<%-- 			<button type="button" class="list-group-item" data-toggle="modal" data-target="#modal"  href="<%=request.getContextPath()%>/appointment!toDetail.action?serial=<s:property value="serial" />">
+ --%>
+	<button type="button" class="list-group-item"  >
+ 			${appointmentSerial}
+			 <span class="badge pull-right">${appointmentTime}</span>
                          
 			</button>
 			</s:iterator>
 			</s:if>
 			
+		<s:else>
+		<button type="button" class="list-group-item" >
+ 			今日无预约
+			 <p class="pull-right">
+                       
+                         
+			</button>
+		</s:else>
 	
 		</div>
 	</div>

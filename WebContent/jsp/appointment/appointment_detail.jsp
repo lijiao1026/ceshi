@@ -60,7 +60,7 @@ pageEncoding="utf-8"%>
 			</tr>
 			<tr>
 				<th width="30%">创建时间</th>
-				<td width="70%"><datefmt:writeString formatStr="yyyy-MM-dd HH:mm:ss" property="${appointment.appointmentTime}">
+				<td width="70%"><datefmt:writeString formatStr="yyyy-MM-dd" property="${appointment.appointmentTime}">
                        </datefmt:writeString>  </td>			
 			</tr>
 			<tr>

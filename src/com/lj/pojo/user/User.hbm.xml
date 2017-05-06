@@ -13,6 +13,7 @@
 		<property name="password"  column="password" length="20"></property>
 		<property name="sex"  column="sex" length="1"></property>
 		<property name="age"  column="age" length="3"></property>
+		<property name="birthDay"  column="birthDay" length="8"></property>
 		<property name="telPhone"  column="telPhone" length="20"></property>
 		<property name="address"  column="address" length="20"></property>
 		<property name="userType"  column="userType" length="1"></property>

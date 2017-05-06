@@ -89,4 +89,13 @@ public class DepartmentDaoImpl extends HibernateDaoSupport implements Department
 		return this.getHibernateTemplate().find("from Department");
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Department> findAllByName(String q2) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(Department.class).add(Restrictions.like("departmentName", "%"+q2+"%"));
+		List<Department> list = this.getHibernateTemplate().findByCriteria(criteria);
+		
+		return list;
+	}
+
 }

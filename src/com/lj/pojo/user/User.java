@@ -14,6 +14,7 @@ public class User {
 	 private String name;//姓名
 	 private String password;//密码
 	 private String sex;//性别 0为男性 1为女性
+	 private String birthDay;
      private String age;//年龄
      private String telPhone;//电话号码
      private String address;//家庭住址
@@ -80,6 +81,12 @@ public class User {
 	}
 	public void setUserType(String userType) {
 		this.userType = userType;
+	}
+	public String getBirthDay() {
+		return birthDay;
+	}
+	public void setBirthDay(String birthDay) {
+		this.birthDay = birthDay;
 	}
      
      

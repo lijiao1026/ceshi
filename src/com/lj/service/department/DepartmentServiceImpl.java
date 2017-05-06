@@ -108,5 +108,10 @@ public class DepartmentServiceImpl implements DepartmentService {
 		return departmentDao.findAll();
 	}
 
+	@Override
+	public List<Department> findAllByName(String q2) {
+		return departmentDao.findAllByName(q2);
+	}
+
 	
 }

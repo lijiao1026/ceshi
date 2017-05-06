@@ -147,5 +147,15 @@ public class AppointmentServiceImpl implements AppointmentService {
 		return pageBean;
 	}
 
+	@Override
+	public List<Object[]> findBySql(String sql) {
+		try {
+			 return appointmentDao.findBySql(sql);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 
 }

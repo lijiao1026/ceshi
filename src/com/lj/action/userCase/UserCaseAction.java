@@ -17,6 +17,7 @@ import com.lj.service.medicine.MedicineService;
 import com.lj.service.user.UserService;
 import com.lj.service.userCase.UserCaseService;
 import com.lj.util.GeneralUtils;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 /**
  * 门诊收费Action
@@ -206,10 +207,31 @@ public class UserCaseAction extends ActionSupport{
 			if(userCase!=null){
 				try {
 					userCase.setCaseTime(getSysTime());
+					User userSession=(User) ActionContext.getContext().getSession().get(GeneralConstant.SESSION_USER);
+					userCase.setUserId(userSession);
 					medicine=medicineService.findById(userCase.getMedicineId().getSerial());
 					medicine.setMedicineStore(medicine.getMedicineStore()-1);
 					medicine.setMedicineSale(medicine.getMedicineSale()+1);
 					medicineService.updateMedicine(medicine);
+					if(userCase.getMedicineId1().getSerial()!=null){
+						medicine=medicineService.findById(userCase.getMedicineId1().getSerial());
+						medicine.setMedicineStore(medicine.getMedicineStore()-1);
+						medicine.setMedicineSale(medicine.getMedicineSale()+1);
+						medicineService.updateMedicine(medicine);	
+					}
+					if(userCase.getMedicineId2().getSerial()!=null){
+						medicine=medicineService.findById(userCase.getMedicineId2().getSerial());
+						medicine.setMedicineStore(medicine.getMedicineStore()-1);
+						medicine.setMedicineSale(medicine.getMedicineSale()+1);
+						medicineService.updateMedicine(medicine);
+					}
+					if(userCase.getMedicineId3().getSerial()!=null){
+						medicine=medicineService.findById(userCase.getMedicineId3().getSerial());
+						medicine.setMedicineStore(medicine.getMedicineStore()-1);
+						medicine.setMedicineSale(medicine.getMedicineSale()+1);
+						medicineService.updateMedicine(medicine);
+					}
+					
 					userCaseService.saveUserCase(userCase);
 					appointment=appointmentService.findById(userCase.getAppointmentId().getSerial());
 					appointment.setAppointmentStatus("1");

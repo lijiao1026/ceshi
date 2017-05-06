@@ -23,16 +23,16 @@ pageEncoding="utf-8"%>
 		<div class="col-md-12"  id="firstIn">
 		<table class="table table-bordered table-striped">
 			<tr>
-				<th>公告标题</th>
-				<td><s:property value="sysNotice.noticeTitle" />  </td>			
+				<th width="20%">公告标题</th>
+				<td width="80%"><s:property value="sysNotice.noticeTitle" />  </td>			
 			</tr>
 			<tr>
-				<th>公告内容</th>
-				<td><s:property value="sysNotice.noticeContent" />  </td>			
+				<th width="20%">公告内容</th>
+				<td width="80%"><s:property value="sysNotice.noticeContent" />  </td>			
 			</tr>
 			<tr>
-				<th>创建时间</th>
-				<td><datefmt:writeString formatStr="yyyy-MM-dd HH:mm:ss" property="${sysNotice.createTime}">
+				<th width="20%">创建时间</th>
+				<td width="80%"><datefmt:writeString formatStr="yyyy-MM-dd HH:mm:ss" property="${sysNotice.createTime}">
                        </datefmt:writeString>  </td>			
 			</tr>
 			

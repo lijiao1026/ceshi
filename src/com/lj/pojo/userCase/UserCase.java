@@ -16,6 +16,9 @@ public class UserCase {
 	private User userId;//就诊医生
 	private String caseTime;//就诊时间
 	private Medicine MedicineId;//所开药品
+	private Medicine MedicineId2;//所开药品
+	private Medicine MedicineId3;//所开药品
+	private Medicine MedicineId1;//所开药品
 	private String caseFree;//就诊费用
 	private String zhuSu;//主诉
 	private String nowBingShi;//现病史
@@ -89,6 +92,24 @@ public class UserCase {
 	}
 	public void setFamailyBingShi(String famailyBingShi) {
 		this.famailyBingShi = famailyBingShi;
+	}
+	public Medicine getMedicineId2() {
+		return MedicineId2;
+	}
+	public void setMedicineId2(Medicine medicineId2) {
+		MedicineId2 = medicineId2;
+	}
+	public Medicine getMedicineId3() {
+		return MedicineId3;
+	}
+	public void setMedicineId3(Medicine medicineId3) {
+		MedicineId3 = medicineId3;
+	}
+	public Medicine getMedicineId1() {
+		return MedicineId1;
+	}
+	public void setMedicineId1(Medicine medicineId1) {
+		MedicineId1 = medicineId1;
 	}
 	
 }

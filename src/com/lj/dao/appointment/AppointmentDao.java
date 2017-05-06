@@ -83,5 +83,11 @@ public interface AppointmentDao {
 	 * @return
 	 */
 	List<Appointment> findByPageByStatus(int begin, int pageSize, String string);
+	/**
+	 * 按照sql语句查询
+	 * @param sql
+	 * @return
+	 */
+	List<Object[]> findBySql(String sql);
 
 }

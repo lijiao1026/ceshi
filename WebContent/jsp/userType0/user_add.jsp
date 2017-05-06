@@ -8,6 +8,8 @@ pageEncoding="utf-8"%>
 	<link href="<%=request.getContextPath()%>/css/bootstrap.min.css" rel="stylesheet" media="screen">
 	<link href="<%=request.getContextPath()%>/css/login.css" rel="stylesheet" type="text/css">
 	<link href="<%=request.getContextPath()%>/css/xcConfirm.css" rel="stylesheet" type="text/css">
+	<link href="<%=request.getContextPath()%>/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <div class="modal-header">
@@ -44,10 +46,10 @@ pageEncoding="utf-8"%>
 					<input type="text" class="form-control"  maxlength="10" name="user.name" id="entername" placeholder="请输入姓名">
 				</div>
 			</div>
-			<div class="col-md-6" >
+		<div class="col-md-6" >
 				<div class="form-group" >
-					<label for="enterage">年龄</label>
-					<input type="text" class="form-control"  maxlength="3" name="user.age" id="enterage" placeholder="请输入年龄">
+					<label for="enterbirthDay">出生日期</label>
+					<input type="text" class="form-control"   name="user.birthDay" id="enterbirthDay" placeholder="请输入生日">
 				</div>
 			</div>
 			<div class="col-md-6" >
@@ -88,6 +90,9 @@ pageEncoding="utf-8"%>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/bootstrap.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/xcConfirm.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.form.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/bootstrap-datetimepicker.zh-CN.js"></script>
+
 <script type="text/javascript">
 $('#modal').modal('show');
 $('#modal').on('hidden.bs.modal', function (e) {
@@ -122,6 +127,14 @@ $('#modal').on('hidden.bs.modal', function (e) {
 			});
 		}
 	}
+$("#enterbirthDay").datetimepicker({
+	 language: 'zh-CN',//显示中文
+	 minView: "month", //选择日期后，不会再跳转去选择时分秒 
+	 format: "yyyy-mm-dd",//显示格式
+	 initialDate: new Date(),
+	  autoclose: true,//选中自动关闭
+	  todayBtn: true//显示今日按钮
+	}); 
 function checkExist() {
 	var userName = $('#enterusername').val();
 	var returnValue=true;
@@ -168,9 +181,15 @@ function checkExist() {
 			window.wxc.xcConfirm("请输入姓名", window.wxc.xcConfirm.typeEnum.info);
 			return false;
 		}
-		var age = $('#enterage').val();
-		if (age==null||age=="") {
-			window.wxc.xcConfirm("请输入年龄", window.wxc.xcConfirm.typeEnum.info);
+		var birthDay=$("#enterbirthDay").val();
+		if (birthDay==null||birthDay=="") {
+			window.wxc.xcConfirm("请输入出生日期", window.wxc.xcConfirm.typeEnum.info);
+			return false;
+		}
+		BirthDay=birthDay.replace(/[\-]/g,"");
+		if(checkTime(BirthDay))
+		{
+			window.wxc.xcConfirm("出生日期不能选择将来日期!", window.wxc.xcConfirm.typeEnum.info);
 			return false;
 		}
 		var telPhone = $('#enterphone').val();
@@ -189,5 +208,17 @@ function checkExist() {
 			return false;
 		}
 		return true; 
+	}
+	function checkTime(data)
+	{
+		var myDate = new Date();
+		var mytimeYear=myDate.getFullYear();
+		var mytimeMonth=myDate.getMonth();
+		var mytimeDay=myDate.getDate();
+		if((parseInt(mytimeYear)*10000+(parseInt(mytimeMonth)+1)*100+parseInt(mytimeDay))>=parseInt(data)){
+			return false;
+		}else{
+			return true;
+		}
 	}
 </script>

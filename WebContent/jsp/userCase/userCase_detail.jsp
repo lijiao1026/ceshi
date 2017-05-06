@@ -36,10 +36,20 @@ pageEncoding="utf-8"%>
                        </datefmt:writeString>   </td>			
 			</tr>
 			<tr>
-				<th width="20%">所开药品</th>
+				<th width="20%">所开药品1</th>
 				<td width="30%"><s:property value="userCase.MedicineId.medicineName" />  </td>	
+				<th width="20%">所开药品2</th>
+				<td width="30%"><s:property value="userCase.MedicineId1.medicineName" /></td>			
+			</tr>
+			<tr>
+				<th width="20%">所开药品3</th>
+				<td width="30%"><s:property value="userCase.MedicineId2.medicineName" />  </td>	
+				<th width="20%">所开药品4</th>
+				<td width="30%"><s:property value="userCase.MedicineId3.medicineName" />  </td>			
+			</tr>
+			<tr>
 				<th width="20%">就诊费用</th>
-				<td width="30%"><s:property value="userCase.caseFree" />  </td>			
+				<td width="30%"><s:property value="userCase.caseFree" />  </td>		
 			</tr>
 			<tr>
 				<th width="20%">主诉</th>

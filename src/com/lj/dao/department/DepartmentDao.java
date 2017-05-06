@@ -63,5 +63,11 @@ public interface DepartmentDao {
 	 * @return
 	 */
 	List<Department> findAll();
+	/**
+	 * 根据名称查询出所有科室
+	 * @param q2
+	 * @return
+	 */
+	List<Department> findAllByName(String q2);
 
 }

@@ -34,10 +34,13 @@ pageEncoding="utf-8"  %>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<!--   <li class="active"><a href="#">系统首页 <span class="sr-only">(current)</span></a></li> -->
-					<li id="menu_1"><a  id="firstPage" onclick="loadIframe(1)">系统首页 <span class="sr-only">(current)</span></a></li>
+					<s:if test="user.userType==1||user.userType==2" >
+					<li id="menu_1"><a  id="firstPage" onclick="loadIframe(1)">系统首页 <span class="sr-only">(current)</span></a></li>					
+					</s:if>
+					<s:if test="user.userType==1||user.userType==2">
 					<li id="menu_2"><a onclick="loadIframe(2)">挂号预约</a></li>
-					<s:if test="user.userType==1||user.userType==0">
-					
+					</s:if>
+					<s:if test="user.userType==2">
 					<li id="menu_3"> <a onclick="loadIframe(3)">门诊收费</a></li>
 				</s:if>
 				<s:if  test="user.userType==0">
@@ -46,7 +49,7 @@ pageEncoding="utf-8"  %>
 				<li class="dropdown" id="menu_4">
 					<a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">药库管理 <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a onclick="loadIframe(4)">药品入库</a></li>
+						<li><a id="firstPage" onclick="loadIframe(4)">药品入库</a></li>
 						<li role="separator" class="divider"></li>
 						<li><a onclick="loadIframe(5)">药品管理</a></li>      
 					</ul>

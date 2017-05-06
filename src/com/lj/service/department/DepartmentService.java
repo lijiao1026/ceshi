@@ -51,6 +51,12 @@ public interface DepartmentService {
 	 * @return
 	 */
 	List<Department> findAll();
+	/**
+	 * 根据名称查询出科室
+	 * @param q2
+	 * @return
+	 */
+	List<Department> findAllByName(String q2);
 	
 
 }
