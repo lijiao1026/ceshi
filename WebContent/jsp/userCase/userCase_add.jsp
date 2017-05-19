@@ -84,10 +84,10 @@ pageEncoding="utf-8"%>
 				</div>
 			</div>
 			<div class="col-lg-6 col-md-6 tabLength" >
-				<div class="form-group">
+			<!-- 	<div class="form-group">
 					<label for="entercaseFree" >就诊费用&nbsp;&nbsp;&nbsp;</label>
 					<input size="44" type="text" class="form-control" name="userCase.caseFree" id="entercaseFree"   placeholder="请输入就诊费用" class="form-group" >
-				</div>
+				</div> -->
 			</div>
 			
 			<div class="col-md-10 col-lg-10 col-lg-push-2 col-md-push-2 tabLength"   >
@@ -295,7 +295,7 @@ pageEncoding="utf-8"%>
 			window.wxc.xcConfirm("请选择药品名称", window.wxc.xcConfirm.typeEnum.info);
 			return false;
 		}
-		var entercaseFree = $('#entercaseFree').val();
+		/* var entercaseFree = $('#entercaseFree').val();
 		if (entercaseFree==null||entercaseFree=="") {
 			window.wxc.xcConfirm("请输入就诊费用", window.wxc.xcConfirm.typeEnum.info);
 			return false;
@@ -303,7 +303,7 @@ pageEncoding="utf-8"%>
 		if (!checkNumber(entercaseFree)) {
 			window.wxc.xcConfirm("就诊费用请输入数字", window.wxc.xcConfirm.typeEnum.info);
 			return false;
-		}
+		} */
 		var enterzhuSu = $('#enterzhuSu').val();
 		if (enterzhuSu==null||enterzhuSu=="") {
 			window.wxc.xcConfirm("请输入主诉", window.wxc.xcConfirm.typeEnum.info);

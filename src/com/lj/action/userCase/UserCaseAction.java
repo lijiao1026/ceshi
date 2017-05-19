@@ -209,29 +209,35 @@ public class UserCaseAction extends ActionSupport{
 					userCase.setCaseTime(getSysTime());
 					User userSession=(User) ActionContext.getContext().getSession().get(GeneralConstant.SESSION_USER);
 					userCase.setUserId(userSession);
+					int caseFree=50;
+					
 					medicine=medicineService.findById(userCase.getMedicineId().getSerial());
 					medicine.setMedicineStore(medicine.getMedicineStore()-1);
 					medicine.setMedicineSale(medicine.getMedicineSale()+1);
 					medicineService.updateMedicine(medicine);
+					caseFree+=medicine.getUnitPrice();
 					if(userCase.getMedicineId1().getSerial()!=null){
 						medicine=medicineService.findById(userCase.getMedicineId1().getSerial());
 						medicine.setMedicineStore(medicine.getMedicineStore()-1);
 						medicine.setMedicineSale(medicine.getMedicineSale()+1);
 						medicineService.updateMedicine(medicine);	
+						caseFree+=medicine.getUnitPrice();
 					}
 					if(userCase.getMedicineId2().getSerial()!=null){
 						medicine=medicineService.findById(userCase.getMedicineId2().getSerial());
 						medicine.setMedicineStore(medicine.getMedicineStore()-1);
 						medicine.setMedicineSale(medicine.getMedicineSale()+1);
 						medicineService.updateMedicine(medicine);
+						caseFree+=medicine.getUnitPrice();
 					}
 					if(userCase.getMedicineId3().getSerial()!=null){
 						medicine=medicineService.findById(userCase.getMedicineId3().getSerial());
 						medicine.setMedicineStore(medicine.getMedicineStore()-1);
 						medicine.setMedicineSale(medicine.getMedicineSale()+1);
 						medicineService.updateMedicine(medicine);
+						caseFree+=medicine.getUnitPrice();
 					}
-					
+					userCase.setCaseFree(String.valueOf(caseFree));
 					userCaseService.saveUserCase(userCase);
 					appointment=appointmentService.findById(userCase.getAppointmentId().getSerial());
 					appointment.setAppointmentStatus("1");
